@@ -17,11 +17,13 @@ public class PlacementGridScript : MonoBehaviour
     private int _prevHeldY = -1;
 
     private GameObject[,] _gridObjects;
+    private bool[,] _gridDFS;
 
     // Start is called before the first frame update
     void Start()
     {
         _gridObjects = new GameObject[HCells, VCells];
+        _gridDFS = new bool[HCells, VCells];
 
 
         SpriteRenderer sprRender = gameObject.GetComponent<SpriteRenderer>();
@@ -44,7 +46,7 @@ public class PlacementGridScript : MonoBehaviour
 
     public void StartLevel()
     {
-        if (true)
+        if (CanStartLevel())
         {
             TogglePhysics(true);
             Debug.Log("LETSGOOOO");
@@ -77,14 +79,17 @@ public class PlacementGridScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //  Down = pressed (start dragging piece), up = released (place down piece to move/swap)
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
         {
+            //  Get mouse position in world
             Vector2 mousePos = Input.mousePosition;
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.x = Mathf.Round(mouseWorldPos.x);
             mouseWorldPos.y = Mathf.Round(mouseWorldPos.y);
             mouseWorldPos.z = 0;
 
+            //  Get indices for the grid positions
             int gridX = (int)Mathf.Round(mouseWorldPos.x - transform.position.x + HCells/2);
             int gridY = (int)Mathf.Round(mouseWorldPos.y - transform.position.y + VCells/2);
 
@@ -106,7 +111,6 @@ public class PlacementGridScript : MonoBehaviour
 
                             _heldObject = clickedObject;
                             _heldObjectOffset = mouseWorldPos - _heldObject.transform.position;
-                            Debug.Log("Target: " + _heldObject.name);
                         }
                     }
                 }
@@ -122,7 +126,6 @@ public class PlacementGridScript : MonoBehaviour
                     {
                         if (previousObject)
                         {
-                            Debug.Log("Swap!!!");
                             previousObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
                             _gridObjects[_prevHeldX, _prevHeldY] = previousObject;
 
@@ -131,7 +134,6 @@ public class PlacementGridScript : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Place (Y)");
                             _gridObjects[gridX, gridY] = _heldObject;
                             _heldObject.transform.position = _bottomLeftPos + new Vector2(gridX, gridY);
 
@@ -145,5 +147,60 @@ public class PlacementGridScript : MonoBehaviour
                 _prevHeldY = -1;
             }
         }
+    }
+
+
+    private bool CanStartLevel()
+    {        
+        //  Initialize visited matrix for DFS
+        for (int i = 0; i < HCells; i++)
+            for (int j = 0; j < VCells; j++)
+                _gridDFS[i,j] = (_gridObjects[i,j] == null);
+
+        //  Do the DFS once
+        bool onlyOneDFS = false;
+        for (int i = 0; i < HCells; i++)
+        {
+            for (int j = 0; j < VCells; j++)
+            {
+                if (_gridObjects[i,j] != null)
+                {
+                    // Debug.Log(string.Format("DFS start on: {0}", _gridObjects[i,j].name));
+                    PiecesConnectedDFS(i, j);
+
+                    onlyOneDFS = true;
+                    break;
+                }
+            }
+            if (onlyOneDFS)
+                break;
+        }
+
+        //  Check if any pieces weren't visited by DFS
+        for (int i = 0; i < HCells; i++)
+            for (int j = 0; j < VCells; j++)
+                if (!_gridDFS[i,j])
+                {
+                    // Debug.Log(string.Format("Fail {0},{1}", i, j));
+                    return false;
+                }
+
+        return true;
+    }
+    private void PiecesConnectedDFS(int i, int j)
+    {
+        // Debug.Log(string.Format("   DFSing: {0},{1}", i, j));
+        
+        if ((i < 0) || (i >= HCells) || (j < 0) || (j >= VCells))
+            return;
+        if (_gridDFS[i,j])
+            return;
+
+        _gridDFS[i,j] = true;
+
+        PiecesConnectedDFS(i + 1, j);
+        PiecesConnectedDFS(i - 1, j);
+        PiecesConnectedDFS(i, j + 1);
+        PiecesConnectedDFS(i, j - 1);
     }
 }
