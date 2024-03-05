@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class GoblinIdleScript : MonoBehaviour
 {
-    float newPos = 0.0f;
+    private float _newPos = 0.0f;
+    private Animator _animator;
+    private bool _walking = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        _animator = GetComponent<Animator>();
+
         StartCoroutine(IdleAround(Random.Range(0.0f,2.0f)));
     }
 
@@ -22,11 +26,14 @@ public class GoblinIdleScript : MonoBehaviour
         if (willIMove)
         {
             if (GetComponent<SpriteRenderer>().flipX)
-                newPos = Random.Range(-0.25f, transform.localPosition.x-0.05f);
+                _newPos = Random.Range(-0.25f, transform.localPosition.x-0.05f);
             else
-                newPos = Random.Range(transform.localPosition.x+0.05f, 0.25f);
+                _newPos = Random.Range(transform.localPosition.x+0.05f, 0.25f);
 
-            newPos = Mathf.Clamp(newPos, -0.25f, 0.25f);
+            _newPos = Mathf.Clamp(_newPos, -0.25f, 0.25f);
+
+            _walking = true;
+            _animator.SetBool("Walking", true);
         }
 
         StartCoroutine(IdleAround(Random.Range(2.0f,6.0f)));
@@ -34,12 +41,20 @@ public class GoblinIdleScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((newPos != 0.0f) && (Mathf.Abs(transform.localPosition.x - newPos) > 0.02f))
+        if ((_newPos != 0.0f) && (Mathf.Abs(transform.localPosition.x - _newPos) > 0.02f))
         {
-            if (transform.localPosition.x - newPos > 0.0f)
+            if (transform.localPosition.x - _newPos > 0.0f)
                 transform.position -= Vector3.right * 0.005f;
             else
                 transform.position += Vector3.right * 0.005f;
+        }
+        else
+        {
+            if (_walking)
+            {
+                _walking = false;
+                _animator.SetBool("Walking", false);
+            }
         }
 
         Vector3 freezeY = transform.localPosition;

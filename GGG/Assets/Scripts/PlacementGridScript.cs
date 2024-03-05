@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlacementGridScript : MonoBehaviour
 {
-    public int HCells = 5;
+    public int HCells = 3;
     public int VCells = 3;
 
     private Vector2 _bottomLeftPos;
     private Vector2 _topRightPos;
 
-    private GameObject _heldObject;
+    private GameObject _heldObject = null;
     private Vector2 _heldObjectOffset;
 
     private int _prevHeldX = -1;
@@ -32,7 +32,6 @@ public class PlacementGridScript : MonoBehaviour
         _bottomLeftPos = new Vector2(transform.position.x - HCells/2, transform.position.y - VCells/2);
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
 
-        Debug.Log(Physics2D.simulationMode);
         TogglePhysics(false);
     }
 
@@ -98,26 +97,33 @@ public class PlacementGridScript : MonoBehaviour
                 if (InVectorRange(mouseWorldPos, _bottomLeftPos, _topRightPos))
                 {
                     GameObject clickedObject = null;
-                    RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-                    if (hit.collider != null)
-                        clickedObject = hit.collider.gameObject;
+                    RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(Camera.main.ScreenPointToRay(Input.mousePosition));
 
-                    if (!_heldObject)
+                    foreach (RaycastHit2D hit in hits)
+                        if (hit.collider.gameObject.HasCustomTag("CanDragInPlacement"))
+                        {
+                            clickedObject = hit.collider.gameObject;
+                            break;
+                        }
+
+                    if (clickedObject)
                     {
-                        if ((clickedObject) && (clickedObject.HasCustomTag("CanDragInPlacement")))
+                        if (!_heldObject)
                         {
                             _prevHeldX = gridX;
                             _prevHeldY = gridY;
 
                             _heldObject = clickedObject;
                             _heldObjectOffset = mouseWorldPos - _heldObject.transform.position;
+
+                            Debug.Log(_heldObject.name);
                         }
                     }
                 }
             }
             else
-            // MouseButtonUp
             {
+                // MouseButtonUp
                 if (InVectorRange(mouseWorldPos, _bottomLeftPos, _topRightPos))
                 {
                     GameObject previousObject = _gridObjects[gridX, gridY];
@@ -165,7 +171,6 @@ public class PlacementGridScript : MonoBehaviour
             {
                 if (_gridObjects[i,j] != null)
                 {
-                    // Debug.Log(string.Format("DFS start on: {0}", _gridObjects[i,j].name));
                     PiecesConnectedDFS(i, j);
 
                     onlyOneDFS = true;
@@ -180,17 +185,12 @@ public class PlacementGridScript : MonoBehaviour
         for (int i = 0; i < HCells; i++)
             for (int j = 0; j < VCells; j++)
                 if (!_gridDFS[i,j])
-                {
-                    // Debug.Log(string.Format("Fail {0},{1}", i, j));
                     return false;
-                }
 
         return true;
     }
     private void PiecesConnectedDFS(int i, int j)
     {
-        // Debug.Log(string.Format("   DFSing: {0},{1}", i, j));
-        
         if ((i < 0) || (i >= HCells) || (j < 0) || (j >= VCells))
             return;
         if (_gridDFS[i,j])
