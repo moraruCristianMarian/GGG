@@ -48,6 +48,23 @@ public class PlacementGridScript : MonoBehaviour
         {
             TogglePhysics(true);
             Debug.Log("LETSGOOOO");
+
+            GameObject centerPiece = null;
+            FramePieceScript[] framePieces = FindObjectsOfType<FramePieceScript>();
+            //  Find center piece
+            foreach (FramePieceScript framePiece in framePieces)
+            {
+                if (framePiece.gameObject.HasCustomTag("CenterPiece"))
+                {
+                    centerPiece = framePiece.gameObject;
+                    break;
+                }
+            }
+
+            if (centerPiece)
+                //  Join all pieces to center piece 
+                foreach (FramePieceScript framePiece in framePieces)
+                    framePiece.JoinToCenterPiece(centerPiece);
         }
     }
 
@@ -82,7 +99,7 @@ public class PlacementGridScript : MonoBehaviour
 
                     if (!_heldObject)
                     {
-                        if (clickedObject)
+                        if ((clickedObject) && (clickedObject.HasCustomTag("CanDragInPlacement")))
                         {
                             _prevHeldX = gridX;
                             _prevHeldY = gridY;
