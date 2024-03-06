@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2677829427424844462, guid: 20bb4be795f2ea041b73c9dd15733cc6, type: 3}
+      propertyPath: FramePrefab
+      value: 
+      objectReference: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
     - target: {fileID: 3063667154297022424, guid: 20bb4be795f2ea041b73c9dd15733cc6, type: 3}
       propertyPath: m_Name
       value: PlacementGrid

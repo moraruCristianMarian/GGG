@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlacementGridScript : MonoBehaviour
 {
+    public GameObject FramePrefab;
+
     public int HCells = 3;
     public int VCells = 3;
 
@@ -33,6 +35,7 @@ public class PlacementGridScript : MonoBehaviour
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
 
         TogglePhysics(false);
+        SimulatePhysics();
     }
 
     private void TogglePhysics(bool physicsOn)
@@ -41,6 +44,17 @@ public class PlacementGridScript : MonoBehaviour
             Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
         else
             Physics2D.simulationMode = SimulationMode2D.Script;
+    }
+    private void SimulatePhysics()
+    {
+        Rigidbody2D[] rigidbodies = FindObjectsOfType<Rigidbody2D>();
+        foreach (Rigidbody2D rb in rigidbodies)
+            rb.gravityScale = 0f;
+
+        Physics2D.Simulate(0.02f);
+
+        foreach (Rigidbody2D rb in rigidbodies)
+            rb.gravityScale = 1f;
     }
 
     public void StartLevel()
@@ -78,6 +92,11 @@ public class PlacementGridScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(FramePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+
         //  Down = pressed (start dragging piece), up = released (place down piece to move/swap)
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
         {
@@ -152,6 +171,11 @@ public class PlacementGridScript : MonoBehaviour
                 _prevHeldX = -1;
                 _prevHeldY = -1;
             }
+
+            // if (_heldObject)
+            // {
+            //     _heldObject.transform.position = (Vector2)mouseWorldPos + _heldObjectOffset;
+            // }
         }
     }
 
