@@ -134,8 +134,6 @@ public class PlacementGridScript : MonoBehaviour
 
                             _heldObject = clickedObject;
                             _heldObjectOffset = mouseWorldPos - _heldObject.transform.position;
-
-                            Debug.Log(_heldObject.name);
                         }
                     }
                 }
@@ -167,16 +165,27 @@ public class PlacementGridScript : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
+                    _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                }
                 _heldObject = null;
                 _prevHeldX = -1;
                 _prevHeldY = -1;
             }
-
-            // if (_heldObject)
-            // {
-            //     _heldObject.transform.position = (Vector2)mouseWorldPos + _heldObjectOffset;
-            // }
         }
+
+        if (_heldObject)
+            DragHeldObject();
+    }
+    private void DragHeldObject()
+    {
+        Vector2 mousePos = Input.mousePosition;
+        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0;
+        
+        _heldObject.transform.position = (Vector2)mouseWorldPos + _heldObjectOffset;
     }
 
 
