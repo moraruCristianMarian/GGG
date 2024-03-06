@@ -167,8 +167,11 @@ public class PlacementGridScript : MonoBehaviour
                 }
                 else
                 {
-                    _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
-                    _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                    if (_heldObject)
+                    {
+                        _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
+                        _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                    }
                 }
                 _heldObject = null;
                 _prevHeldX = -1;
