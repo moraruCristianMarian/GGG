@@ -6,8 +6,18 @@ using UnityEngine.EventSystems;
 
 public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
 {
+    public Sprite PieceSprite;
+    public GameObject SpawnedPiecePrefab;
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("click");
+        GameObject spawnedPiece = Instantiate(SpawnedPiecePrefab);
+        spawnedPiece.GetComponent<SpriteRenderer>().sprite = PieceSprite;
+
+        PlacementGridScript placementGridScript = FindObjectOfType<PlacementGridScript>();
+        if (placementGridScript)
+        {
+            placementGridScript.SetHeldObject(spawnedPiece, true);
+        }
     }
 }

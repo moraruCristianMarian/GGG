@@ -14,6 +14,7 @@ public class PlacementGridScript : MonoBehaviour
 
     private GameObject _heldObject = null;
     private Vector2 _heldObjectOffset;
+    private bool _boughtObject = false;
 
     private int _prevHeldX = -1;
     private int _prevHeldY = -1;
@@ -21,6 +22,11 @@ public class PlacementGridScript : MonoBehaviour
     private GameObject[,] _gridObjects;
     private bool[,] _gridDFS;
 
+    public void SetHeldObject(GameObject heldObject, bool boughtObject)
+    {
+        _heldObject = heldObject;
+        _boughtObject = boughtObject;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -169,8 +175,16 @@ public class PlacementGridScript : MonoBehaviour
                 {
                     if (_heldObject)
                     {
-                        _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
-                        _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                        if (!_boughtObject)
+                        {
+                            _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
+                            _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                        }
+                        else
+                        {
+                            Destroy(_heldObject);
+                            _boughtObject = false;
+                        }
                     }
                 }
                 _heldObject = null;
