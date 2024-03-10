@@ -321,16 +321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7137acfaeceb5c542980e1bcc3957427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PiecePrefab: {fileID: 8908165531064607881, guid: 66a5078e2e3d6ee4da87b2b83199938e, type: 3}
-  SpritesFrame:
-  - {fileID: 21300000, guid: 0c92a2231ef3f61499935ea93630eff8, type: 3}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: 316bf5600340f60478a6c62ed368ce1f, type: 3}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  SpritesGoblin:
+  ShopPiecePrefab: {fileID: 8908165531064607881, guid: 66a5078e2e3d6ee4da87b2b83199938e, type: 3}
+  ShopPieceSprites:
   - {fileID: 21300000, guid: 993aacbc41a2ab743802da09c23e1122, type: 3}
-  ShopStockIndices: 030000000000000002000000010000000200000004000000
+  - {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
+  GamePiecePrefabs:
+  - {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+  - {fileID: 4159003300396542501, guid: 238106a1c84aa78458dc7af140aa4bad, type: 3}
+  ShopStockIndices: 0100000000000000
   ShopStockPrices: 
   ShopStockQuantity: 
 --- !u!1 &6304593025822237283
@@ -490,7 +488,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1077523851789559018}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.941
+  m_Size: 0.939
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

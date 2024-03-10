@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ShopMenuScript : MonoBehaviour
 {
-    public GameObject PiecePrefab;
-    public List<Sprite> SpritesFrame;
-    public List<Sprite> SpritesGoblin;
+    public GameObject ShopPiecePrefab;
+    public List<Sprite> ShopPieceSprites;
+
+    public List<GameObject> GamePiecePrefabs;
 
     public List<int> ShopStockIndices;
     public List<int> ShopStockPrices;
@@ -19,13 +20,15 @@ public class ShopMenuScript : MonoBehaviour
 
         for (int i = 0; i < ShopStockIndices.Count; i++)
         {
-            GameObject shopPiece = Instantiate(PiecePrefab);
+            GameObject shopPiece = Instantiate(ShopPiecePrefab);
 
             shopPiece.transform.SetParent(gameObject.transform, false);
             shopPiece.transform.position = new Vector2(0, -(i+1) * 75);
 
-            shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = SpritesFrame[ShopStockIndices[i]];
-            shopPiece.GetComponent<ShopPieceScript>().PieceSprite = SpritesFrame[ShopStockIndices[i]];
+            shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = ShopPieceSprites[ShopStockIndices[i]];
+            shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = ShopPieceSprites[ShopStockIndices[i]];
+
+            shopPiece.GetComponent<ShopPieceScript>().SpawnedPiecePrefab = GamePiecePrefabs[ShopStockIndices[i]];
         }
     }
 }
