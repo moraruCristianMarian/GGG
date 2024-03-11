@@ -41,9 +41,13 @@ public class GoblinIdleScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((_newPos != 0.0f) && (Mathf.Abs(transform.localPosition.x - _newPos) > 0.02f))
+        float walkLimit = transform.localPosition.x - _newPos;
+        if ((transform.TransformDirection(Vector3.left)).x > 0)
+            walkLimit *= -1;
+
+        if ((_newPos != 0.0f) && (Mathf.Abs(walkLimit) > 0.02f))
         {
-            if (transform.localPosition.x - _newPos > 0.0f)
+            if (walkLimit > 0.0f)
                 transform.position -= Vector3.right * 0.005f;
             else
                 transform.position += Vector3.right * 0.005f;

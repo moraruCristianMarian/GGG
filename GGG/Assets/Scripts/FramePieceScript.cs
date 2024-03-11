@@ -42,11 +42,11 @@ public class FramePieceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && gameObject.HasCustomTag("CenterPiece"))
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 20.0f, ForceMode2D.Impulse);
-
-            Debug.Log("Jump");
+            FrameCommandScript sendCommandScript = gameObject.GetComponent<FrameCommandScript>();
+            if (sendCommandScript)
+                sendCommandScript.SendCommand();
         }
     }
 }
