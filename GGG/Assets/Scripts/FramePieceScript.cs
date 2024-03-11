@@ -4,19 +4,38 @@ using UnityEngine;
 
 public class FramePieceScript : MonoBehaviour
 {
-    public void JoinToCenterPiece(GameObject centerPiece)
+    public List<Vector3> NeighbourDirections;
+    public List<GameObject> Neighbours;
+
+    public List<GameObject> GetNeighbours()
     {
-        if (gameObject == centerPiece)
-            return;
+        Neighbours = new List<GameObject>();
 
-        Rigidbody2D centerRigidbody = centerPiece.GetComponent<Rigidbody2D>();
-
-        if (centerRigidbody)
+        foreach (Vector3 dir in NeighbourDirections)
         {
-            transform.SetParent(centerRigidbody.transform);
-
-            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
-            joint.connectedBody = centerRigidbody;
+            Collider2D hitCollider = Physics2D.OverlapPoint(transform.position + dir);
+            if (hitCollider != null)
+            {
+                if (hitCollider.gameObject.HasCustomTag("FramePiece"))
+                {
+                    Debug.Log(string.Format("   {0} found a neighbour {1} at {2}", gameObject.name, hitCollider.gameObject.name, dir));  
+                    Neighbours.Add(hitCollider.gameObject);
+                }
+            }
+        }
+        Debug.Log(string.Format("  {0} neighbours", Neighbours.Count));
+        return Neighbours;
+    }
+    public void JoinToPiece(GameObject otherPiece)
+    {
+        Rigidbody2D otherRigidbody = otherPiece.GetComponent<Rigidbody2D>();
+        Rigidbody2D myRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        if (myRigidbody)
+        {
+            otherRigidbody.transform.SetParent(transform);
+        
+            FixedJoint2D joint = otherPiece.AddComponent<FixedJoint2D>();
+            joint.connectedBody = myRigidbody;
         }
     }
 
@@ -25,7 +44,6 @@ public class FramePieceScript : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            //GameObject parent = transform.parent.gameObject;
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 20.0f, ForceMode2D.Impulse);
 
             Debug.Log("Jump");

@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customTags:
   - {fileID: 11400000, guid: dd7c1d0db5f07c64982986273ff0c4b8, type: 2}
+  - {fileID: 11400000, guid: e92214adf61927944bbe374e1327ad7c, type: 2}
 --- !u!114 &6919783456953175126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faaffdf6e3ca734488693b6c187c3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NeighbourDirections:
+  - {x: 0, y: -1, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}
+  Neighbours: []
 --- !u!1001 &3727918250680190310
 PrefabInstance:
   m_ObjectHideFlags: 0

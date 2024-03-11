@@ -325,10 +325,12 @@ MonoBehaviour:
   ShopPieceSprites:
   - {fileID: 21300000, guid: 993aacbc41a2ab743802da09c23e1122, type: 3}
   - {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
+  - {fileID: -25254906, guid: fe3c90102e2b3764ba2d578eda8e5239, type: 3}
   GamePiecePrefabs:
   - {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
   - {fileID: 4159003300396542501, guid: 238106a1c84aa78458dc7af140aa4bad, type: 3}
-  ShopStockIndices: 0100000000000000
+  - {fileID: 4291056668231334804, guid: e7cb3db9c66cd384caa1d75a7047569a, type: 3}
+  ShopStockIndices: 010000000000000002000000
   ShopStockPrices: 
   ShopStockQuantity: 
 --- !u!1 &6304593025822237283

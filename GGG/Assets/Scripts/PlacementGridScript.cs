@@ -20,18 +20,22 @@ public class PlacementGridScript : MonoBehaviour
     private int _prevHeldY = -1;
 
     private GameObject[,] _gridObjects;
-    private bool[,] _gridDFS;
+    private bool[,] _gridSearchVisited;
+
+    private GameObject _centerPiece = null;
 
     public void SetHeldObject(GameObject heldObject, bool boughtObject)
     {
         _heldObject = heldObject;
         _boughtObject = boughtObject;
+
+        StartCoroutine(SimulatePhysics(0.0f));
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         _gridObjects = new GameObject[HCells, VCells];
-        _gridDFS = new bool[HCells, VCells];
+        _gridSearchVisited = new bool[HCells, VCells];
 
 
         SpriteRenderer sprRender = gameObject.GetComponent<SpriteRenderer>();
@@ -41,7 +45,7 @@ public class PlacementGridScript : MonoBehaviour
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
 
         TogglePhysics(false);
-        SimulatePhysics();
+        StartCoroutine(SimulatePhysics(0.1f));
     }
 
     private void TogglePhysics(bool physicsOn)
@@ -51,8 +55,12 @@ public class PlacementGridScript : MonoBehaviour
         else
             Physics2D.simulationMode = SimulationMode2D.Script;
     }
-    private void SimulatePhysics()
+    //  Physics need to be simulated briefly at the start
+    //  so that colliders and raycasts work properly.
+    private IEnumerator SimulatePhysics(float delay = 0.0f)
     {
+        yield return new WaitForSeconds(delay);
+
         Rigidbody2D[] rigidbodies = FindObjectsOfType<Rigidbody2D>();
         foreach (Rigidbody2D rb in rigidbodies)
             rb.gravityScale = 0f;
@@ -70,22 +78,39 @@ public class PlacementGridScript : MonoBehaviour
             TogglePhysics(true);
             Debug.Log("LETSGOOOO");
 
-            GameObject centerPiece = null;
-            FramePieceScript[] framePieces = FindObjectsOfType<FramePieceScript>();
-            //  Find center piece
-            foreach (FramePieceScript framePiece in framePieces)
+            JoinPieces();
+        }
+    }
+    //  BFS to join all pieces to each of their direct neighbours
+    private void JoinPieces()
+    {
+        Dictionary<GameObject, bool> visitedPieces = new Dictionary<GameObject, bool>();
+
+        Queue<GameObject> piecesQueue = new Queue<GameObject>();
+        piecesQueue.Enqueue(_centerPiece);
+
+        while (piecesQueue.Count > 0)
+        {
+            FramePieceScript framePieceScript = piecesQueue.Dequeue().GetComponent<FramePieceScript>();
+
+            Debug.Log(string.Format("BFS at {0}", framePieceScript.gameObject.name));
+
+            List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
+            foreach (GameObject neighbour in myNeighbours)
             {
-                if (framePiece.gameObject.HasCustomTag("CenterPiece"))
+                Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
+
+                // framePieceScript.JoinToPiece(neighbour);
+
+                bool visited;
+                if (!(visitedPieces.TryGetValue(neighbour, out visited) && visited))
                 {
-                    centerPiece = framePiece.gameObject;
-                    break;
+                    visitedPieces[neighbour] = true;
+                    piecesQueue.Enqueue(neighbour);
+
+                    framePieceScript.JoinToPiece(neighbour);
                 }
             }
-
-            if (centerPiece)
-                //  Join all pieces to center piece 
-                foreach (FramePieceScript framePiece in framePieces)
-                    framePiece.JoinToCenterPiece(centerPiece);
         }
     }
 
@@ -95,12 +120,12 @@ public class PlacementGridScript : MonoBehaviour
                 (mouseWorldPos.y >= minBound.y && mouseWorldPos.y <= maxBound.y));
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(FramePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            SimulatePhysics();
         }
 
         //  Down = pressed (start dragging piece), up = released (place down piece to move/swap)
@@ -207,11 +232,31 @@ public class PlacementGridScript : MonoBehaviour
 
 
     private bool CanStartLevel()
-    {        
+    {   
+        int centerPieceCount = 0;
+
+        //  Find if there is any center piece
+        _centerPiece = null;
+        FramePieceScript[] framePieces = FindObjectsOfType<FramePieceScript>();
+
+        foreach (FramePieceScript framePiece in framePieces)
+        {
+            if (framePiece.gameObject.HasCustomTag("CenterPiece"))
+            {
+                _centerPiece = framePiece.gameObject;
+                centerPieceCount += 1;
+            }
+        }
+
+        if (centerPieceCount != 1)
+            return false;
+
+
+
         //  Initialize visited matrix for DFS
         for (int i = 0; i < HCells; i++)
             for (int j = 0; j < VCells; j++)
-                _gridDFS[i,j] = (_gridObjects[i,j] == null);
+                _gridSearchVisited[i,j] = (_gridObjects[i,j] == null);
 
         //  Do the DFS once
         bool onlyOneDFS = false;
@@ -234,7 +279,7 @@ public class PlacementGridScript : MonoBehaviour
         //  Check if any pieces weren't visited by DFS
         for (int i = 0; i < HCells; i++)
             for (int j = 0; j < VCells; j++)
-                if (!_gridDFS[i,j])
+                if (!_gridSearchVisited[i,j])
                     return false;
 
         return true;
@@ -243,10 +288,10 @@ public class PlacementGridScript : MonoBehaviour
     {
         if ((i < 0) || (i >= HCells) || (j < 0) || (j >= VCells))
             return;
-        if (_gridDFS[i,j])
+        if (_gridSearchVisited[i,j])
             return;
 
-        _gridDFS[i,j] = true;
+        _gridSearchVisited[i,j] = true;
 
         PiecesConnectedDFS(i + 1, j);
         PiecesConnectedDFS(i - 1, j);
