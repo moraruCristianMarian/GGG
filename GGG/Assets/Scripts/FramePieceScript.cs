@@ -18,12 +18,12 @@ public class FramePieceScript : MonoBehaviour
             {
                 if (hitCollider.gameObject.HasCustomTag("FramePiece"))
                 {
-                    Debug.Log(string.Format("   {0} found a neighbour {1} at {2}", gameObject.name, hitCollider.gameObject.name, dir));  
+                    // Debug.Log(string.Format("   {0} found a neighbour {1} at {2}", gameObject.name, hitCollider.gameObject.name, dir));  
                     Neighbours.Add(hitCollider.gameObject);
                 }
             }
         }
-        Debug.Log(string.Format("  {0} neighbours", Neighbours.Count));
+        // Debug.Log(string.Format("  {0} neighbours", Neighbours.Count));
         return Neighbours;
     }
     public void JoinToPiece(GameObject otherPiece)

@@ -93,14 +93,12 @@ public class PlacementGridScript : MonoBehaviour
         {
             FramePieceScript framePieceScript = piecesQueue.Dequeue().GetComponent<FramePieceScript>();
 
-            Debug.Log(string.Format("BFS at {0}", framePieceScript.gameObject.name));
+            // Debug.Log(string.Format("BFS at {0}", framePieceScript.gameObject.name));
 
             List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
             foreach (GameObject neighbour in myNeighbours)
             {
-                Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
-
-                // framePieceScript.JoinToPiece(neighbour);
+                // Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
 
                 bool visited;
                 if (!(visitedPieces.TryGetValue(neighbour, out visited) && visited))
