@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlacementGridScript : MonoBehaviour
 {
+    public GameObject AbilitiesBar;
+    public GameObject StartButton;
+    public GameObject Shop;
+
     public GameObject FramePrefab;
 
     public int HCells = 3;
@@ -59,6 +63,10 @@ public class PlacementGridScript : MonoBehaviour
             Debug.Log("LETSGOOOO");
 
             JoinPieces();
+
+            AbilitiesBar.SetActive(true);
+            StartButton.SetActive(false);
+            Shop.SetActive(false);
         }
     }
     //  BFS to join all pieces to each of their direct neighbours
