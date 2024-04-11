@@ -28,8 +28,6 @@ public class PlacementGridScript : MonoBehaviour
     {
         _heldObject = heldObject;
         _boughtObject = boughtObject;
-
-        StartCoroutine(SimulatePhysics(0.0f));
     }
     
     void Start()
@@ -43,39 +41,21 @@ public class PlacementGridScript : MonoBehaviour
 
         _bottomLeftPos = new Vector2(transform.position.x - HCells/2, transform.position.y - VCells/2);
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
-
-        TogglePhysics(false);
-        StartCoroutine(SimulatePhysics(0.1f));
     }
 
-    private void TogglePhysics(bool physicsOn)
+    //  When the level starts, the placed pieces' rigidbodies must go from static to dynamic.
+    private void EnablePhysics()
     {
-        if (physicsOn)
-            Physics2D.simulationMode = SimulationMode2D.FixedUpdate;
-        else
-            Physics2D.simulationMode = SimulationMode2D.Script;
-    }
-    //  Physics need to be simulated briefly at the start
-    //  so that colliders and raycasts work properly.
-    private IEnumerator SimulatePhysics(float delay = 0.0f)
-    {
-        yield return new WaitForSeconds(delay);
-
-        Rigidbody2D[] rigidbodies = FindObjectsOfType<Rigidbody2D>();
-        foreach (Rigidbody2D rb in rigidbodies)
-            rb.gravityScale = 0f;
-
-        Physics2D.Simulate(0.02f);
-
-        foreach (Rigidbody2D rb in rigidbodies)
-            rb.gravityScale = 1f;
+        FramePieceScript[] framePieceScripts = FindObjectsOfType<FramePieceScript>();
+        foreach (FramePieceScript fps in framePieceScripts)
+            fps.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void StartLevel()
     {
         if (CanStartLevel())
         {
-            TogglePhysics(true);
+            EnablePhysics();
             Debug.Log("LETSGOOOO");
 
             JoinPieces();
@@ -88,6 +68,7 @@ public class PlacementGridScript : MonoBehaviour
 
         Queue<GameObject> piecesQueue = new Queue<GameObject>();
         piecesQueue.Enqueue(_centerPiece);
+        visitedPieces[_centerPiece] = true;
 
         while (piecesQueue.Count > 0)
         {
@@ -121,11 +102,6 @@ public class PlacementGridScript : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SimulatePhysics();
-        }
-
         //  Down = pressed (start dragging piece), up = released (place down piece to move/swap)
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
         {

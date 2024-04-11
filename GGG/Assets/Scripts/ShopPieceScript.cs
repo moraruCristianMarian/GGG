@@ -11,6 +11,7 @@ public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         GameObject spawnedPiece = Instantiate(SpawnedPiecePrefab);
+        spawnedPiece.GetComponent<FramePieceScript>().gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
         PlacementGridScript placementGridScript = FindObjectOfType<PlacementGridScript>();
         if (placementGridScript)

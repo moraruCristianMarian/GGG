@@ -49,4 +49,10 @@ public class FramePieceScript : MonoBehaviour
                 sendCommandScript.SendCommand();
         }
     }
+
+    void OnDrawGizmos()
+    {
+        foreach (Vector3 dir in NeighbourDirections)
+            Gizmos.DrawLine(transform.position, transform.position+dir);
+    }
 }

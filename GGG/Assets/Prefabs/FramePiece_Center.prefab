@@ -130,6 +130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FramePiece_Center
       objectReference: {fileID: 0}
+    - target: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_TagString
+      value: CenterPiece
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5629975452345828289, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
