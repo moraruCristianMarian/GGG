@@ -145,6 +145,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6898557830136103250}
+    - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2216251479151069715}
   m_SourcePrefab: {fileID: 100100000, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
 --- !u!1 &4159003300396542501 stripped
 GameObject:
@@ -163,6 +166,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c9b8aff54a8c549a8a5789a5d1580c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2216251479151069715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4159003300396542501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab71a260b7f27445b22c45ba1bd3b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityIcon: {fileID: 21300000, guid: 632daa4993096fe41ad318d55893960a, type: 3}
+  MyAbility:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6898557830136103250}
+        m_TargetAssemblyTypeName: FrameCommandScript, Assembly-CSharp
+        m_MethodName: SendCommand
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  AbilityIconPrefab: {fileID: 4074406854875492908, guid: e5709178b6fd4a2428bd52545b8373ff, type: 3}
 --- !u!4 &7440495791042667127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1720927155887986338, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}

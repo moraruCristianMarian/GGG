@@ -67,6 +67,11 @@ public class PlacementGridScript : MonoBehaviour
             AbilitiesBar.SetActive(true);
             StartButton.SetActive(false);
             Shop.SetActive(false);
+
+            //  Create all ability icons of placed pieces
+            CreateAbilityButtonScript[] createAbilityButtons = GameObject.FindObjectsOfType<CreateAbilityButtonScript>();
+            foreach (CreateAbilityButtonScript cab in createAbilityButtons)
+                cab.CreateMyAbilityButton();
         }
     }
     //  BFS to join all pieces to each of their direct neighbours
@@ -83,19 +88,19 @@ public class PlacementGridScript : MonoBehaviour
             FramePieceScript framePieceScript = piecesQueue.Dequeue().GetComponent<FramePieceScript>();
 
             // Debug.Log(string.Format("BFS at {0}", framePieceScript.gameObject.name));
+            visitedPieces[framePieceScript.gameObject] = true;
 
             List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
             foreach (GameObject neighbour in myNeighbours)
             {
                 // Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
 
+                framePieceScript.JoinToPiece(neighbour);
+                
                 bool visited;
                 if (!(visitedPieces.TryGetValue(neighbour, out visited) && visited))
                 {
-                    visitedPieces[neighbour] = true;
                     piecesQueue.Enqueue(neighbour);
-
-                    framePieceScript.JoinToPiece(neighbour);
                 }
             }
         }

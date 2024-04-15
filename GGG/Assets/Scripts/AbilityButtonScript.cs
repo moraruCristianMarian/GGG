@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class AbilityButtonScript : MonoBehaviour
 {
     public Button AbilityButton;
+    public Image Image;
     public Image ImageCooldown;
     public float AbilityMaxCooldown = 1.0f;
     private bool _usedAbility = false;

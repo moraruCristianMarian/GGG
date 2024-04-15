@@ -13,7 +13,7 @@ public class FramePieceScript : MonoBehaviour
 
         foreach (Vector3 dir in NeighbourDirections)
         {
-            Collider2D hitCollider = Physics2D.OverlapPoint(transform.position + dir);
+            Collider2D hitCollider = Physics2D.OverlapPoint(transform.position + transform.TransformVector(dir));
             if (hitCollider != null)
             {
                 if (hitCollider.gameObject.HasCustomTag("FramePiece"))
