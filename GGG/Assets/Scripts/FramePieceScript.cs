@@ -39,6 +39,62 @@ public class FramePieceScript : MonoBehaviour
         }
     }
 
+
+    public bool FindWayToCenterPieceOrElse(GameObject destroyedExcluded)
+    {
+        if (gameObject.tag == "CenterPiece")
+            return true;
+
+        Dictionary<GameObject, bool> visitedPieces = new Dictionary<GameObject, bool>();
+
+        Queue<GameObject> piecesQueue = new Queue<GameObject>();
+        piecesQueue.Enqueue(gameObject);
+        visitedPieces[gameObject] = true;
+
+        while (piecesQueue.Count > 0)
+        {
+            FramePieceScript framePieceScript = piecesQueue.Dequeue().GetComponent<FramePieceScript>();
+
+            if (framePieceScript.gameObject.tag == "CenterPiece")
+                return true;
+
+            List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
+            myNeighbours.Remove(destroyedExcluded);
+            foreach (GameObject neighbour in myNeighbours)
+            {
+                bool visited;
+                if (!(visitedPieces.TryGetValue(neighbour, out visited) && visited))
+                {
+                    visitedPieces[neighbour] = true;
+                    piecesQueue.Enqueue(neighbour);
+                    Debug.Log(string.Format("{0} visited {1}", framePieceScript.gameObject.name, neighbour.name));
+                }
+            }
+        }
+
+        return false;
+    }
+    public void DestroyPiece(bool reparentChildren = true)
+    {
+        if (reparentChildren)
+        {
+            GetNeighbours();
+            foreach (GameObject neighbour in Neighbours)
+                if (!neighbour.GetComponent<FramePieceScript>().FindWayToCenterPieceOrElse(gameObject))
+                    Destroy(neighbour);
+                else
+                {
+                    // if (neighbour.transform.parent == gameObject.transform)
+                    //     neighbour.transform.SetParent(gameObject.transform.parent);
+                    Debug.Log("TO-DO: Reparent " + neighbour.name);
+                }
+        }
+
+        Destroy(gameObject);
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {

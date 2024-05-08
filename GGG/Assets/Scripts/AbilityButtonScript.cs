@@ -10,14 +10,8 @@ public class AbilityButtonScript : MonoBehaviour
     public Image Image;
     public Image ImageCooldown;
     public float AbilityMaxCooldown = 1.0f;
+    public FrameAbilityScript MyUnitAbility;
     private bool _usedAbility = false;
-    public UnityEvent MyAbility;
-
-    void Awake()
-    {
-        if (MyAbility == null)
-            MyAbility = new UnityEvent();
-    }
 
     public void UseAbility()
     {
@@ -27,7 +21,7 @@ public class AbilityButtonScript : MonoBehaviour
             AbilityButton.interactable = false;
             _usedAbility = true;
 
-            MyAbility.Invoke();
+            MyUnitAbility.UseActiveAbility();
         }
     }
 
