@@ -20,6 +20,9 @@ public class CreateAbilityButtonScript : MonoBehaviour
         {
             _myAbilityIcon = Instantiate(AbilityIconPrefab);
             _myAbilityIcon.transform.SetParent(AbilityBar.transform, false);
+
+            float myBarOffset = (AbilityBar.transform.childCount - 1) * AbilityIcon.rect.width * 3;
+            _myAbilityIcon.transform.position += new Vector3(myBarOffset, 0, 0);
             
             AbilityButtonScript abs = _myAbilityIcon.GetComponentInChildren<AbilityButtonScript>();
             if (abs)

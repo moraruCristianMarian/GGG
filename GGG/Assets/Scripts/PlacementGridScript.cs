@@ -158,15 +158,26 @@ public class PlacementGridScript : MonoBehaviour
             }
             else
             {
-                // MouseButtonUp
+                // MouseButtonUp (release the mouse) over the placement grid
                 if (InVectorRange(mouseWorldPos, _bottomLeftPos, _topRightPos))
                 {
                     GameObject previousObject = _gridObjects[gridX, gridY];
 
+                    //  Release the mouse and a piece is held
                     if (_heldObject)
                     {
+                        //  Release the mouse, a piece is held,
+                        //  ... and there is another piece previously placed where the mouse is
                         if (previousObject)
                         {
+                            //  ... and the piece held waas just dragged from the shop
+                            if (_boughtObject)
+                            {
+                                _boughtObject = false;
+                                Destroy(_heldObject);
+                                return;
+                            }
+
                             previousObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
                             _gridObjects[_prevHeldX, _prevHeldY] = previousObject;
 
@@ -182,21 +193,30 @@ public class PlacementGridScript : MonoBehaviour
                                 _gridObjects[_prevHeldX, _prevHeldY] = null;
                         }
                     }
+
+                    //  Testing
+                    _boughtObject = false;
                 }
                 else
                 {
+                    //  Mouse released outside the placement grid
                     if (_heldObject)
                     {
-                        if (!_boughtObject)
-                        {
-                            _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
-                            _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
-                        }
-                        else
-                        {
+                        // //  Pieces which were previously placed on the grid return to their original position
+                        // if (!_boughtObject)
+                        // {
+                        //     _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
+                        //     _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
+                        // }
+                        // //  Pieces dragged out of the shop are instead deleted
+                        // else
+                        // {
+                            if ((_prevHeldX != -1) && (_prevHeldY != -1))
+                                _gridObjects[_prevHeldX, _prevHeldY] = null;
+                                
                             Destroy(_heldObject);
                             _boughtObject = false;
-                        }
+                        // }
                     }
                 }
                 _heldObject = null;

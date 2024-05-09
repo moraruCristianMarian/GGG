@@ -67,7 +67,7 @@ public class FramePieceScript : MonoBehaviour
                 {
                     visitedPieces[neighbour] = true;
                     piecesQueue.Enqueue(neighbour);
-                    Debug.Log(string.Format("{0} visited {1}", framePieceScript.gameObject.name, neighbour.name));
+                    // Debug.Log(string.Format("{0} visited {1}", framePieceScript.gameObject.name, neighbour.name));
                 }
             }
         }
@@ -84,9 +84,11 @@ public class FramePieceScript : MonoBehaviour
                     Destroy(neighbour);
                 else
                 {
-                    // if (neighbour.transform.parent == gameObject.transform)
-                    //     neighbour.transform.SetParent(gameObject.transform.parent);
-                    Debug.Log("TO-DO: Reparent " + neighbour.name);
+                    if (neighbour.transform.parent == gameObject.transform)
+                    {
+                        Debug.Log("TO-DO: Reparent " + neighbour.name);
+                        neighbour.transform.SetParent(gameObject.transform.parent);
+                    }
                 }
         }
 
