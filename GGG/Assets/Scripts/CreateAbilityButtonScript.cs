@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class CreateAbilityButtonScript : MonoBehaviour
 {
     public Sprite AbilityIcon;
-    // public UnityEvent MyAbility;
+    public int ChargesLeft = -1;
 
     public GameObject AbilityIconPrefab;
 
@@ -27,15 +27,11 @@ public class CreateAbilityButtonScript : MonoBehaviour
             AbilityButtonScript abs = _myAbilityIcon.GetComponentInChildren<AbilityButtonScript>();
             if (abs)
             {
+                abs.ChargesLeft = ChargesLeft;
                 abs.MyUnitAbility = gameObject.GetComponent<FrameAbilityScript>();
                 abs.Image.sprite = AbilityIcon;
                 abs.ImageCooldown.sprite = AbilityIcon;
             }
         }
     }
-
-    // public void UseAbility()
-    // {
-    //     MyAbility.Invoke();
-    // }
 }

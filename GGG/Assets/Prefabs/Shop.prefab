@@ -327,14 +327,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
   - {fileID: -25254906, guid: fe3c90102e2b3764ba2d578eda8e5239, type: 3}
   - {fileID: 21300000, guid: a5ddaa7ba8edda74bada3d680325ed8e, type: 3}
+  - {fileID: 21300000, guid: 4dc08797ad67f20449373e17cbed864a, type: 3}
   GamePiecePrefabs:
   - {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
   - {fileID: 4159003300396542501, guid: 238106a1c84aa78458dc7af140aa4bad, type: 3}
   - {fileID: 4291056668231334804, guid: e7cb3db9c66cd384caa1d75a7047569a, type: 3}
   - {fileID: 9103766131706421021, guid: 3c5abc92d156da74aad84dacffe5fbd5, type: 3}
-  ShopStockIndices: 01000000000000000200000003000000
+  - {fileID: 4291056668231334804, guid: 63dff27f32d100c48be0051df8761ff1, type: 3}
+  ShopStockIndices: 0100000000000000020000000300000004000000
   ShopStockPrices: 
   ShopStockQuantity: 
+  ShopStockAbilityCharges: ffffffffffffffffffffffffffffffff04000000
 --- !u!1 &6304593025822237283
 GameObject:
   m_ObjectHideFlags: 0

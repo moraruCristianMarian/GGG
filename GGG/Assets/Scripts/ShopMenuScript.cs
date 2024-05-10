@@ -12,6 +12,7 @@ public class ShopMenuScript : MonoBehaviour
     public List<int> ShopStockIndices;
     public List<int> ShopStockPrices;
     public List<int> ShopStockQuantity;
+    public List<int> ShopStockAbilityCharges;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class ShopMenuScript : MonoBehaviour
             shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = ShopPieceSprites[ShopStockIndices[i]];
 
             shopPiece.GetComponent<ShopPieceScript>().SpawnedPiecePrefab = GamePiecePrefabs[ShopStockIndices[i]];
+            shopPiece.GetComponent<ShopPieceScript>().ActiveAbilityCharges = ShopStockAbilityCharges[i];
         }
     }
 }

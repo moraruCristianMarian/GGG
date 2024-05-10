@@ -72,6 +72,9 @@ public class PlacementGridScript : MonoBehaviour
             CreateAbilityButtonScript[] createAbilityButtons = GameObject.FindObjectsOfType<CreateAbilityButtonScript>();
             foreach (CreateAbilityButtonScript cab in createAbilityButtons)
                 cab.CreateMyAbilityButton();
+
+            //  Destroy the placement grid
+            Destroy(gameObject);
         }
     }
     //  BFS to join all pieces to each of their direct neighbours

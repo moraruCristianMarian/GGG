@@ -261,7 +261,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 30, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -482,30 +482,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: GamePiecePrefabs.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: ShopPieceSprites.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: ShopStockIndices.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: GamePiecePrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 4291056668231334804, guid: 63dff27f32d100c48be0051df8761ff1, type: 3}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: ShopPieceSprites.Array.data[4]
-      value: 
-      objectReference: {fileID: 21300000, guid: 4dc08797ad67f20449373e17cbed864a, type: 3}
-    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
-      propertyPath: ShopStockIndices.Array.data[4]
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4655205795716521463, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_Name
       value: LevelCore
@@ -543,8 +519,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000034735367
+      value: -0.00001952291
       objectReference: {fileID: 0}
     - target: {fileID: 8983721689562068324, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.x
