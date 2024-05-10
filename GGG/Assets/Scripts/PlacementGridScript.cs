@@ -53,6 +53,10 @@ public class PlacementGridScript : MonoBehaviour
         FramePieceScript[] framePieceScripts = FindObjectsOfType<FramePieceScript>();
         foreach (FramePieceScript fps in framePieceScripts)
             fps.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        GameObject[] wheels = GameObject.FindGameObjectsWithTag("Wheel");
+        foreach (GameObject wheel in wheels)
+            wheel.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void StartLevel()

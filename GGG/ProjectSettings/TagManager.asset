@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CenterPiece
   - AbilityBar
+  - Wheel
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Frame Pieces
+  - Wheels
   - 
   - 
   - 
