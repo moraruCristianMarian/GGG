@@ -79,7 +79,6 @@ public class WheelHighlightScript : MonoBehaviour, IPointerDownHandler, IPointer
         }
         if (!nearestFps)
         {
-            Debug.Log("no neighbours ;[");
             Destroy(gameObject);
             return;
         }

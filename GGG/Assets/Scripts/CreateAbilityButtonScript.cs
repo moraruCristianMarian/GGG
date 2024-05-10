@@ -31,6 +31,12 @@ public class CreateAbilityButtonScript : MonoBehaviour
                 abs.MyUnitAbility = gameObject.GetComponent<FrameAbilityScript>();
                 abs.Image.sprite = AbilityIcon;
                 abs.ImageCooldown.sprite = AbilityIcon;
+
+                //  Associate the ability icon to its frame piece
+                //  (so that, if the piece is destroyed, the ability icon disappears too)
+                FrameAbilityScript fas = gameObject.GetComponent<FrameAbilityScript>();
+                if (fas)
+                    fas.MyActiveAbilityIcon = abs.transform.parent.gameObject;
             }
         }
     }

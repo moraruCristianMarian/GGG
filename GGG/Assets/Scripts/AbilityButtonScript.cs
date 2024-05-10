@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class AbilityButtonScript : MonoBehaviour
+public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public FrameAbilityScript MyUnitAbility;
     public TextMeshProUGUI ChargesLeftText;
@@ -34,6 +35,15 @@ public class AbilityButtonScript : MonoBehaviour
                     ImageCooldown.fillAmount = 1;
             }
         }
+    }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        Debug.Log("it's hover");
+    }
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        Debug.Log("we're so (exit?)");
     }
 
     void Start()

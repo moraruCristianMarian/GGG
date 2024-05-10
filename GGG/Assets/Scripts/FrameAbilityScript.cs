@@ -7,6 +7,7 @@ public class FrameAbilityScript : MonoBehaviour
 {
     public UnityEvent MyAbility;
     public UnityEvent MyActiveAbility;
+    public GameObject MyActiveAbilityIcon;
 
     void Awake()
     {
@@ -23,5 +24,11 @@ public class FrameAbilityScript : MonoBehaviour
     public void UseActiveAbility()
     {
         MyActiveAbility.Invoke();
+    }
+
+    void OnDestroy()
+    {
+        if (MyActiveAbilityIcon)
+            Destroy(MyActiveAbilityIcon);
     }
 }
