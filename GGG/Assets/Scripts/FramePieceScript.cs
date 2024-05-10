@@ -13,14 +13,16 @@ public class FramePieceScript : MonoBehaviour
 
         foreach (Vector3 dir in NeighbourDirections)
         {
-            Collider2D hitCollider = Physics2D.OverlapPoint(transform.position + transform.TransformVector(dir));
-            if (hitCollider != null)
+            Collider2D[] hitColliders = Physics2D.OverlapPointAll(transform.position + transform.TransformVector(dir));
+            if (hitColliders.Length > 0)
             {
-                if (hitCollider.gameObject.HasCustomTag("FramePiece"))
-                {
-                    // Debug.Log(string.Format("   {0} found a neighbour {1} at {2}", gameObject.name, hitCollider.gameObject.name, dir));  
-                    Neighbours.Add(hitCollider.gameObject);
-                }
+                foreach (Collider2D hitCollider in hitColliders)
+                    if (hitCollider.gameObject.HasCustomTag("FramePiece"))
+                    {
+                        // Debug.Log(string.Format("   {0} found a neighbour {1} at {2}", gameObject.name, hitCollider.gameObject.name, dir));  
+                        Neighbours.Add(hitCollider.gameObject);
+                        break;
+                    }
             }
         }
         // Debug.Log(string.Format("  {0} neighbours", Neighbours.Count));

@@ -53,10 +53,6 @@ public class PlacementGridScript : MonoBehaviour
         FramePieceScript[] framePieceScripts = FindObjectsOfType<FramePieceScript>();
         foreach (FramePieceScript fps in framePieceScripts)
             fps.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-        GameObject[] wheels = GameObject.FindGameObjectsWithTag("Wheel");
-        foreach (GameObject wheel in wheels)
-            wheel.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void StartLevel()
@@ -76,6 +72,11 @@ public class PlacementGridScript : MonoBehaviour
             CreateAbilityButtonScript[] createAbilityButtons = GameObject.FindObjectsOfType<CreateAbilityButtonScript>();
             foreach (CreateAbilityButtonScript cab in createAbilityButtons)
                 cab.CreateMyAbilityButton();
+
+            //  Spawn wheels
+            WheelHighlightScript[] wheelHighlightScripts = GameObject.FindObjectsOfType<WheelHighlightScript>();
+            foreach (WheelHighlightScript whs in wheelHighlightScripts)
+                whs.AttachWheelsToFramePiece();
 
             //  Destroy the placement grid
             Destroy(gameObject);
