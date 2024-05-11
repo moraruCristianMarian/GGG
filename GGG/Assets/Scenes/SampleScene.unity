@@ -968,6 +968,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5290831610425941282, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7289687902280081836, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: VCells
       value: 5
@@ -998,7 +1002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00003641335
+      value: -0.000002185771
       objectReference: {fileID: 0}
     - target: {fileID: 8983721689562068324, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.x
