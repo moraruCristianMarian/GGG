@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 811425236301917824, guid: 287fc39c806d1894b9d30808d467acbc, type: 3}
+      propertyPath: _customTags.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2612841949675700654, guid: 287fc39c806d1894b9d30808d467acbc, type: 3}
       propertyPath: m_Controller
       value: 
@@ -60,7 +64,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinKing
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 811425236301917824, guid: 287fc39c806d1894b9d30808d467acbc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

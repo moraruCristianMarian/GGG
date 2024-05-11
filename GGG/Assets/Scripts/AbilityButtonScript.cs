@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 
 public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject MyFramePiece;
+    public Material MaterialHighlighted;
     public FrameAbilityScript MyUnitAbility;
     public TextMeshProUGUI ChargesLeftText;
     public Button AbilityButton;
@@ -16,6 +18,7 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
     public float AbilityMaxCooldown = 1.0f;
     public int ChargesLeft = -1;
     private bool _usedAbility = false;
+    private Material _materialNotHighlighted;
 
     public void UseAbility()
     {
@@ -39,11 +42,16 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        Debug.Log("it's hover");
+        if (MyFramePiece)
+        {
+            _materialNotHighlighted = MyFramePiece.GetComponent<SpriteRenderer>().material;
+            MyFramePiece.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
+        }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        Debug.Log("we're so (exit?)");
+        if (MyFramePiece)
+            MyFramePiece.GetComponent<SpriteRenderer>().material = _materialNotHighlighted;
     }
 
     void Start()

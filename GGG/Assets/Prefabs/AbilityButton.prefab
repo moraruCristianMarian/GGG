@@ -280,6 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c44d5a0b0873e345b7b25a24f6807e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyFramePiece: {fileID: 0}
+  MaterialHighlighted: {fileID: 2100000, guid: 17269dba9fb5d764f9b2de62d6133e99, type: 2}
   MyUnitAbility: {fileID: 0}
   ChargesLeftText: {fileID: 3453435717842632806}
   AbilityButton: {fileID: 6050781859123767363}

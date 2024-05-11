@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1671698707642228566, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6af2e2ddc4b03e4abb62ec5583b70f5, type: 3}
     - target: {fileID: 1720927155887986338, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -48,18 +52,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3754777958042332133, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754777958042332133, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1728982091113546952, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6f5e20213b03a354da769481a890fa02, type: 2}
     - target: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_Name
-      value: FramePiece_Other
+      value: FramePiece_Demolitionist
       objectReference: {fileID: 0}
+    - target: {fileID: 6237745686694564888, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dab22855861dc70498e86c06d459d58b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -102,18 +106,6 @@ MonoBehaviour:
   MyAbility:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2407618871367613784}
-        m_TargetAssemblyTypeName: TestAbilityScript, Assembly-CSharp
-        m_MethodName: DoSomething
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1338516851702606130}
         m_TargetAssemblyTypeName: FramePieceScript, Assembly-CSharp
         m_MethodName: DestroyPiece
@@ -129,6 +121,7 @@ MonoBehaviour:
   MyActiveAbility:
     m_PersistentCalls:
       m_Calls: []
+  MyActiveAbilityIcon: {fileID: 0}
 --- !u!114 &2407618871367613784
 MonoBehaviour:
   m_ObjectHideFlags: 0

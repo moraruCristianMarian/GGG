@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7290436380106854782}
   - component: {fileID: 3053260883502521140}
   - component: {fileID: 2612841949675700654}
+  - component: {fileID: 811425236301917824}
   m_Layer: 0
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,3 +120,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &811425236301917824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9051541723725104807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445055b4f26c39d4d93c6afd4874b6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _customTags:
+  - {fileID: 11400000, guid: 1ab09353f625725439b0dfb511e97488, type: 2}

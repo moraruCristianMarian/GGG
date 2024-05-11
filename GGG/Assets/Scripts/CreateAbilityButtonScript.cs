@@ -27,6 +27,7 @@ public class CreateAbilityButtonScript : MonoBehaviour
             AbilityButtonScript abs = _myAbilityIcon.GetComponentInChildren<AbilityButtonScript>();
             if (abs)
             {
+                abs.MyFramePiece = gameObject;
                 abs.ChargesLeft = ChargesLeft;
                 abs.MyUnitAbility = gameObject.GetComponent<FrameAbilityScript>();
                 abs.Image.sprite = AbilityIcon;
