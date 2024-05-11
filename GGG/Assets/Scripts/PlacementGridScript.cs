@@ -47,6 +47,81 @@ public class PlacementGridScript : MonoBehaviour
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
     }
 
+    //  Conditions to start level:
+    //  - there is (only) 1 Center/King piece placed
+    //  - every piece placed is connected to every other piece
+    private bool CanStartLevel()
+    {   
+        int centerPieceCount = 0;
+
+        //  Find if there is any center piece
+        _centerPiece = null;
+        FramePieceScript[] framePieces = FindObjectsOfType<FramePieceScript>();
+
+        foreach (FramePieceScript framePiece in framePieces)
+        {
+            if (framePiece.gameObject.HasCustomTag("CenterPiece"))
+            {
+                _centerPiece = framePiece.gameObject;
+                centerPieceCount += 1;
+            }
+        }
+
+        if (centerPieceCount != 1)
+            return false;
+
+
+
+        //  Initialize visited matrix for DFS
+        for (int i = 0; i < HCells; i++)
+            for (int j = 0; j < VCells; j++)
+                _gridSearchVisited[i,j] = (_gridObjects[i,j] == null);
+
+        //  Do the DFS once
+        bool onlyOneDFS = false;
+        for (int i = 0; i < HCells; i++)
+        {
+            for (int j = 0; j < VCells; j++)
+            {
+                if (_gridObjects[i,j] != null)
+                {
+                    PiecesConnectedDFS(i, j);
+
+                    onlyOneDFS = true;
+                    break;
+                }
+            }
+            if (onlyOneDFS)
+                break;
+        }
+
+        //  Check if any pieces weren't visited by DFS
+        for (int i = 0; i < HCells; i++)
+            for (int j = 0; j < VCells; j++)
+                if (!_gridSearchVisited[i,j])
+                    return false;
+
+        return true;
+    }
+
+    public void StartLevel()
+    {
+        if (CanStartLevel())
+        {
+            Debug.Log("LETSGOOOO");
+
+            EnablePhysics();
+            JoinPieces();
+            ChangeUIToLevelStart();
+            CreateAbilityIcons();
+            SpawnMechanicWheels();
+            InitOffenseMode();
+
+            //  Destroy the placement grid
+            Destroy(gameObject);
+        }
+    }
+    
     //  When the level starts, the placed pieces' rigidbodies must go from static to dynamic.
     private void EnablePhysics()
     {
@@ -54,34 +129,15 @@ public class PlacementGridScript : MonoBehaviour
         foreach (FramePieceScript fps in framePieceScripts)
             fps.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
-
-    public void StartLevel()
+    
+    //  Hide shop and start button, display the ability bar
+    private void ChangeUIToLevelStart()
     {
-        if (CanStartLevel())
-        {
-            EnablePhysics();
-            Debug.Log("LETSGOOOO");
-
-            JoinPieces();
-
-            AbilitiesBar.SetActive(true);
-            StartButton.SetActive(false);
-            Shop.SetActive(false);
-
-            //  Create all ability icons of placed pieces
-            CreateAbilityButtonScript[] createAbilityButtons = GameObject.FindObjectsOfType<CreateAbilityButtonScript>();
-            foreach (CreateAbilityButtonScript cab in createAbilityButtons)
-                cab.CreateMyAbilityButton();
-
-            //  Spawn wheels
-            WheelHighlightScript[] wheelHighlightScripts = GameObject.FindObjectsOfType<WheelHighlightScript>();
-            foreach (WheelHighlightScript whs in wheelHighlightScripts)
-                whs.AttachWheelsToFramePiece();
-
-            //  Destroy the placement grid
-            Destroy(gameObject);
-        }
-    }
+        AbilitiesBar.SetActive(true);
+        StartButton.SetActive(false);
+        Shop.SetActive(false);
+    } 
+    
     //  BFS to join all pieces to each of their direct neighbours
     private void JoinPieces()
     {
@@ -112,6 +168,31 @@ public class PlacementGridScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    //  Create all ability icons of placed pieces
+    private void CreateAbilityIcons()
+    {
+        CreateAbilityButtonScript[] createAbilityButtons = GameObject.FindObjectsOfType<CreateAbilityButtonScript>();
+        foreach (CreateAbilityButtonScript cab in createAbilityButtons)
+            cab.CreateMyAbilityButton();
+    }
+    
+    //  Spawn all wheels as indicated by wheel highlights of the goblin mechanic frame pieces
+    private void SpawnMechanicWheels()
+    {
+        WheelHighlightScript[] wheelHighlightScripts = GameObject.FindObjectsOfType<WheelHighlightScript>();
+        foreach (WheelHighlightScript whs in wheelHighlightScripts)
+            whs.AttachWheelsToFramePiece();
+    }
+
+    //  Lancers with the specific settings should march forward
+    private void InitOffenseMode()
+    {
+        LancerScript[] lancerScripts = GameObject.FindObjectsOfType<LancerScript>();
+        foreach (LancerScript ls in lancerScripts)
+            if (ls.MarchOnStart)
+                ls.Marching = true;
     }
 
     private bool InVectorRange(Vector3 mouseWorldPos, Vector2 minBound, Vector2 maxBound)
@@ -245,60 +326,6 @@ public class PlacementGridScript : MonoBehaviour
         _heldObject.transform.position = (Vector2)mouseWorldPos + _heldObjectOffset;
     }
 
-
-    private bool CanStartLevel()
-    {   
-        int centerPieceCount = 0;
-
-        //  Find if there is any center piece
-        _centerPiece = null;
-        FramePieceScript[] framePieces = FindObjectsOfType<FramePieceScript>();
-
-        foreach (FramePieceScript framePiece in framePieces)
-        {
-            if (framePiece.gameObject.HasCustomTag("CenterPiece"))
-            {
-                _centerPiece = framePiece.gameObject;
-                centerPieceCount += 1;
-            }
-        }
-
-        if (centerPieceCount != 1)
-            return false;
-
-
-
-        //  Initialize visited matrix for DFS
-        for (int i = 0; i < HCells; i++)
-            for (int j = 0; j < VCells; j++)
-                _gridSearchVisited[i,j] = (_gridObjects[i,j] == null);
-
-        //  Do the DFS once
-        bool onlyOneDFS = false;
-        for (int i = 0; i < HCells; i++)
-        {
-            for (int j = 0; j < VCells; j++)
-            {
-                if (_gridObjects[i,j] != null)
-                {
-                    PiecesConnectedDFS(i, j);
-
-                    onlyOneDFS = true;
-                    break;
-                }
-            }
-            if (onlyOneDFS)
-                break;
-        }
-
-        //  Check if any pieces weren't visited by DFS
-        for (int i = 0; i < HCells; i++)
-            for (int j = 0; j < VCells; j++)
-                if (!_gridSearchVisited[i,j])
-                    return false;
-
-        return true;
-    }
     private void PiecesConnectedDFS(int i, int j)
     {
         if ((i < 0) || (i >= HCells) || (j < 0) || (j >= VCells))

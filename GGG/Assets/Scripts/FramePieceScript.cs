@@ -88,7 +88,7 @@ public class FramePieceScript : MonoBehaviour
                 {
                     if (neighbour.transform.parent == gameObject.transform)
                     {
-                        Debug.Log("TO-DO: Reparent " + neighbour.name);
+                        // Debug.Log("TO-DO: Reparent " + neighbour.name);
                         neighbour.transform.SetParent(gameObject.transform.parent);
                     }
                 }
