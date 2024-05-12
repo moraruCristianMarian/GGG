@@ -40,6 +40,9 @@ public class GoblinRookScript : MonoBehaviour
             
             _myGoblin.transform.localPosition = localPosRook;
             _kingGoblin.transform.localPosition = localPosKing;
+
+            //  Since the king's piece changed, the entire hierarchy needs to be rebuilt
+            PlacementGridScript.ParentPieces(myGoblinFrame.gameObject);
         }
     }
 }

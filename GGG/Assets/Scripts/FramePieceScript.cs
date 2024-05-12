@@ -45,9 +45,25 @@ public class FramePieceScript : MonoBehaviour
     }
 
 
-    public bool FindWayToCenterPieceOrElse(GameObject destroyedExcluded)
+
+    GameObject FindKingGoblinsPiece()
     {
-        if (gameObject.tag == "CenterPiece")
+        GameObject[] goblins = GameObject.FindGameObjectsWithTag("Goblin");
+        foreach (GameObject goblin in goblins)
+            if (goblin.HasCustomTag("KingGoblin"))
+                return goblin.transform.parent.gameObject;
+        return null;
+    }
+    public bool FindWayToKingsPieceOrElse(GameObject destroyedExcluded, GameObject kingGoblinsPiece)
+    {
+        //  If the piece that king goblin inhabits wasn't found in previous calls, find it now
+        if (!kingGoblinsPiece)
+            kingGoblinsPiece = FindKingGoblinsPiece();
+        //  If it couldn't be found now, then it doesn't exist => autofail
+        if (!kingGoblinsPiece)
+            return false;
+
+        if (gameObject == kingGoblinsPiece)
             return true;
 
         Dictionary<GameObject, bool> visitedPieces = new Dictionary<GameObject, bool>();
@@ -60,7 +76,7 @@ public class FramePieceScript : MonoBehaviour
         {
             FramePieceScript framePieceScript = piecesQueue.Dequeue().GetComponent<FramePieceScript>();
 
-            if (framePieceScript.gameObject.tag == "CenterPiece")
+            if (framePieceScript.gameObject == kingGoblinsPiece)
                 return true;
 
             List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
@@ -85,10 +101,14 @@ public class FramePieceScript : MonoBehaviour
         {
             GetNeighbours();
             foreach (GameObject neighbour in Neighbours)
-                if (!neighbour.GetComponent<FramePieceScript>().FindWayToCenterPieceOrElse(gameObject))
+                if (!neighbour.GetComponent<FramePieceScript>().FindWayToKingsPieceOrElse(gameObject, null))
+                {
+                    // Debug.Log("Ded: " + neighbour.name);
                     Destroy(neighbour);
+                }
                 else
                 {
+                    // Debug.Log("Saved: " + neighbour.name);
                     if (neighbour.transform.parent == gameObject.transform)
                     {
                         // Debug.Log("TO-DO: Reparent " + neighbour.name);

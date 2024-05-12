@@ -109,7 +109,7 @@ public class PlacementGridScript : MonoBehaviour
         if (CanStartLevel())
         {
             EnablePhysics();
-            ParentPieces();
+            ParentPieces(_centerPiece);
             JoinPieces();
 
             ChangeUIToLevelStart();
@@ -140,14 +140,21 @@ public class PlacementGridScript : MonoBehaviour
         Shop.SetActive(false);
     } 
     
-    //  BFS to link pieces in a parent hierarchy starting from the center piece
-    private void ParentPieces()
+    static void DeparentPieces()
     {
+        FramePieceScript[] framePieceScripts = GameObject.FindObjectsOfType<FramePieceScript>();
+        foreach (FramePieceScript fps in framePieceScripts)
+            fps.transform.SetParent(null);
+    }
+    //  BFS to link pieces in a parent hierarchy starting from the center piece
+    static public void ParentPieces(GameObject centerPiece)
+    {
+        DeparentPieces();
         Dictionary<GameObject, bool> visitedPieces = new Dictionary<GameObject, bool>();
 
         Queue<GameObject> piecesQueue = new Queue<GameObject>();
-        piecesQueue.Enqueue(_centerPiece);
-        visitedPieces[_centerPiece] = true;
+        piecesQueue.Enqueue(centerPiece);
+        visitedPieces[centerPiece] = true;
 
         while (piecesQueue.Count > 0)
         {
@@ -159,7 +166,7 @@ public class PlacementGridScript : MonoBehaviour
             List<GameObject> myNeighbours = framePieceScript.GetNeighbours();
             foreach (GameObject neighbour in myNeighbours)
             {
-                // Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
+                // Debug.Log(string.Format("{0} parented {1}", framePieceScript.gameObject.name, neighbour.name));
 
                 framePieceScript.ParentPiece(neighbour);
                 
