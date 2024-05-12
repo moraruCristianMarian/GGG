@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseScript : MonoBehaviour
 {
     public GameObject PauseMenu;
     public GameObject NoProgressGuy;
+    public TextMeshProUGUI MainMenuButtonText;
     private bool _paused = false;
     private bool _confirmMainMenu = false;
 
@@ -28,6 +30,11 @@ public class PauseScript : MonoBehaviour
     {
         _confirmMainMenu = isConfirmed;
         NoProgressGuy.SetActive(_confirmMainMenu);
+
+        if (_confirmMainMenu)
+            MainMenuButtonText.color = new Color(1f, 1f, 0.2f, 1f);
+        else
+            MainMenuButtonText.color = new Color(1f, 1f, 1f, 1f);
     }
     public void GoToMainMenu()
     {
