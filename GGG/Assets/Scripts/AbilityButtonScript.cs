@@ -19,6 +19,7 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
     public int ChargesLeft = -1;
     private bool _usedAbility = false;
     private Material _materialNotHighlighted;
+    private Material _materialNotHighlightedGoblin;
 
     public void UseAbility()
     {
@@ -46,12 +47,18 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
         {
             _materialNotHighlighted = MyFramePiece.GetComponent<SpriteRenderer>().material;
             MyFramePiece.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
+
+            _materialNotHighlightedGoblin = MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material;
+            MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
         }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if (MyFramePiece)
+        {
             MyFramePiece.GetComponent<SpriteRenderer>().material = _materialNotHighlighted;
+            MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = _materialNotHighlightedGoblin;
+        }
     }
 
     void Start()

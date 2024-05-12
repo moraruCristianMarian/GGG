@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1faaffdf6e3ca734488693b6c187c3f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MyGoblin: {fileID: 5629975452345828289}
   NeighbourDirections:
   - {x: 0, y: -1, z: 0}
   - {x: 1, y: 0, z: 0}
@@ -258,5 +259,10 @@ PrefabInstance:
 --- !u!4 &3754777958042332133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 551584634398928515, guid: 287fc39c806d1894b9d30808d467acbc, type: 3}
+  m_PrefabInstance: {fileID: 3727918250680190310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5629975452345828289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9051541723725104807, guid: 287fc39c806d1894b9d30808d467acbc, type: 3}
   m_PrefabInstance: {fileID: 3727918250680190310}
   m_PrefabAsset: {fileID: 0}

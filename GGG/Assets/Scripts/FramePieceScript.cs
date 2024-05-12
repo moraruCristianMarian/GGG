@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FramePieceScript : MonoBehaviour
 {
+    public GameObject MyGoblin;
     public List<Vector3> NeighbourDirections;
     public List<GameObject> Neighbours;
 

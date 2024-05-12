@@ -108,8 +108,6 @@ public class PlacementGridScript : MonoBehaviour
     {
         if (CanStartLevel())
         {
-            Debug.Log("LETSGOOOO");
-
             EnablePhysics();
             ParentPieces();
             JoinPieces();

@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FramePiece_Drummer
       objectReference: {fileID: 0}
+    - target: {fileID: 6919783456953175126, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: MyGoblin
+      value: 
+      objectReference: {fileID: 2364248193501181065}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5629975452345828289, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}

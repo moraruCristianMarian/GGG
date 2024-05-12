@@ -1,89 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7996752379123400417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1953284797690497342}
-  - component: {fileID: 7379464474889117184}
-  m_Layer: 0
-  m_Name: Rocket
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1953284797690497342
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996752379123400417}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7312343558211302342}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7379464474889117184
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996752379123400417}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 009c430724a103548962b7500a2b2911, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.6875, y: 0.6875}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1001 &8258299448787608932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1671698707642228566, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 19d0eeb0901fae746b6eceb463abf654, type: 3}
+      objectReference: {fileID: 21300000, guid: 19c16432ac4e38c4dabd3759e7f3f082, type: 3}
     - target: {fileID: 1720927155887986338, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -136,9 +52,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1728982091113546952, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c661155d77526204899c7b557d1235e3, type: 2}
     - target: {fileID: 3754777958042332133, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4106995963878255590, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: _customTags.Array.size
@@ -146,49 +66,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_Name
-      value: FramePiece_Dasher
+      value: FramePiece_Rook
+      objectReference: {fileID: 0}
+    - target: {fileID: 5629975452345828289, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: m_Name
+      value: GoblinRook
       objectReference: {fileID: 0}
     - target: {fileID: 6237745686694564888, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b3255b84fb30ec046bf6d059f16ce764, type: 3}
-    m_RemovedComponents:
-    - {fileID: 1865446260165467730, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-    - {fileID: 1728982091113546952, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-    - {fileID: 4106995963878255590, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      objectReference: {fileID: 21300000, guid: 3e29e97e50e54b249b1fd66b3ec2e592, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1720927155887986338, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1953284797690497342}
+    m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5577894293120083626}
     - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1571033998500580744}
     - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 939701010972605156}
+      addedObject: {fileID: 6669142405116983926}
+    - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5912424368799478111}
   m_SourcePrefab: {fileID: 100100000, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
 --- !u!1 &4291056668231334804 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
   m_PrefabInstance: {fileID: 8258299448787608932}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5577894293120083626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4291056668231334804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97dfa26661aaa7f469233d573de57e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1571033998500580744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,25 +109,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyAbility:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5577894293120083626}
-        m_TargetAssemblyTypeName: GoblinDasherAbilityScript, Assembly-CSharp
-        m_MethodName: RocketJump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   MyActiveAbility:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5577894293120083626}
-        m_TargetAssemblyTypeName: GoblinDasherAbilityScript, Assembly-CSharp
-        m_MethodName: RocketJump
+      - m_Target: {fileID: 6669142405116983926}
+        m_TargetAssemblyTypeName: GoblinRookScript, Assembly-CSharp
+        m_MethodName: SwapWithKing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -232,7 +126,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   MyActiveAbilityIcon: {fileID: 0}
---- !u!114 &939701010972605156
+--- !u!114 &6669142405116983926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291056668231334804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868a4fae3badb02448d950699701eb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5912424368799478111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,8 +153,3 @@ MonoBehaviour:
   AbilityIcon: {fileID: 21300000, guid: 30e9eaecebef44946b85e16212408503, type: 3}
   ChargesLeft: -1
   AbilityIconPrefab: {fileID: 4074406854875492908, guid: e5709178b6fd4a2428bd52545b8373ff, type: 3}
---- !u!4 &7312343558211302342 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1720927155887986338, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-  m_PrefabInstance: {fileID: 8258299448787608932}
-  m_PrefabAsset: {fileID: 0}
