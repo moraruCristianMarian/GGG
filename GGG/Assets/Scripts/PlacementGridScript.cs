@@ -111,10 +111,14 @@ public class PlacementGridScript : MonoBehaviour
             Debug.Log("LETSGOOOO");
 
             EnablePhysics();
+            ParentPieces();
             JoinPieces();
+
             ChangeUIToLevelStart();
             CreateAbilityIcons();
+
             SpawnMechanicWheels();
+
             InitOffenseMode();
 
             //  Destroy the placement grid
@@ -138,8 +142,8 @@ public class PlacementGridScript : MonoBehaviour
         Shop.SetActive(false);
     } 
     
-    //  BFS to join all pieces to each of their direct neighbours
-    private void JoinPieces()
+    //  BFS to link pieces in a parent hierarchy starting from the center piece
+    private void ParentPieces()
     {
         Dictionary<GameObject, bool> visitedPieces = new Dictionary<GameObject, bool>();
 
@@ -159,7 +163,7 @@ public class PlacementGridScript : MonoBehaviour
             {
                 // Debug.Log(string.Format("BFS neighbour {0}", neighbour.name));
 
-                framePieceScript.JoinToPiece(neighbour);
+                framePieceScript.ParentPiece(neighbour);
                 
                 bool visited;
                 if (!(visitedPieces.TryGetValue(neighbour, out visited) && visited))
@@ -168,6 +172,15 @@ public class PlacementGridScript : MonoBehaviour
                 }
             }
         }
+    }
+    //  Every piece creates a joint to every other piece (even non-neighbouring ones)
+    //  Reason: it makes the frame structure as a whole entirely rigid, instead of wobbling around like jelly
+    private void JoinPieces()
+    {
+        FramePieceScript[] framePieceScripts = GameObject.FindObjectsOfType<FramePieceScript>();
+        for (int i = 0; i < framePieceScripts.Length; i++)
+            for (int j = i+1; j < framePieceScripts.Length; j++)
+                framePieceScripts[i].JoinToPiece(framePieceScripts[j].gameObject);
     }
 
     //  Create all ability icons of placed pieces

@@ -34,11 +34,13 @@ public class FramePieceScript : MonoBehaviour
         Rigidbody2D myRigidbody = gameObject.GetComponent<Rigidbody2D>();
         if (myRigidbody)
         {
-            otherRigidbody.transform.SetParent(transform);
-        
             FixedJoint2D joint = otherPiece.AddComponent<FixedJoint2D>();
             joint.connectedBody = myRigidbody;
         }
+    }
+    public void ParentPiece(GameObject otherPiece)
+    {
+        otherPiece.transform.SetParent(transform);
     }
 
 
