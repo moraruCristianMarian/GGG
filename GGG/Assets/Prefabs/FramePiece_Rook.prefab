@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c661155d77526204899c7b557d1235e3, type: 2}
+    - target: {fileID: 1865446260165467730, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      propertyPath: FreezeY
+      value: -0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 3754777958042332133, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.03
@@ -89,6 +93,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5912424368799478111}
+    - targetCorrespondingSourceObject: {fileID: 5629975452345828289, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2666372416519047085}
   m_SourcePrefab: {fileID: 100100000, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
 --- !u!1 &4291056668231334804 stripped
 GameObject:
@@ -153,3 +160,20 @@ MonoBehaviour:
   AbilityIcon: {fileID: 21300000, guid: 30e9eaecebef44946b85e16212408503, type: 3}
   ChargesLeft: -1
   AbilityIconPrefab: {fileID: 4074406854875492908, guid: e5709178b6fd4a2428bd52545b8373ff, type: 3}
+--- !u!1 &4376073048096515749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5629975452345828289, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+  m_PrefabInstance: {fileID: 8258299448787608932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2666372416519047085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4376073048096515749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7620308d9c6964c84e54e0fd171bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -20,6 +20,7 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
     private bool _usedAbility = false;
     private Material _materialNotHighlighted;
     private Material _materialNotHighlightedGoblin;
+    private bool _highlighted = false;
 
     public void UseAbility()
     {
@@ -45,19 +46,37 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if (MyFramePiece)
         {
+            _highlighted = true;
+
             _materialNotHighlighted = MyFramePiece.GetComponent<SpriteRenderer>().material;
             MyFramePiece.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
 
-            _materialNotHighlightedGoblin = MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material;
-            MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
+            if (MyFramePiece.GetComponent<FramePieceScript>().MyGoblin)
+            {
+                _materialNotHighlightedGoblin = MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material;
+                MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = MaterialHighlighted;
+            }
         }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if (MyFramePiece)
         {
+            _highlighted = false;
+
             MyFramePiece.GetComponent<SpriteRenderer>().material = _materialNotHighlighted;
-            MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = _materialNotHighlightedGoblin;
+            if (MyFramePiece.GetComponent<FramePieceScript>().MyGoblin)
+                MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = _materialNotHighlightedGoblin;
+        }
+    }
+
+    void OnDestroy()
+    {
+        if ((MyFramePiece) && (_highlighted))
+        {
+            MyFramePiece.GetComponent<SpriteRenderer>().material = _materialNotHighlighted;
+            if (MyFramePiece.GetComponent<FramePieceScript>().MyGoblin)
+                MyFramePiece.GetComponent<FramePieceScript>().MyGoblin.GetComponent<SpriteRenderer>().material = _materialNotHighlightedGoblin;
         }
     }
 

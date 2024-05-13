@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinIdleScript : MonoBehaviour
 {
+    public float FreezeY = -0.1f;
     private float _newPos = 0.0f;
     private Animator _animator;
     private bool _walking = false;
@@ -62,7 +63,7 @@ public class GoblinIdleScript : MonoBehaviour
         }
 
         Vector3 freezeY = transform.localPosition;
-        freezeY.y = -0.1f;
+        freezeY.y = FreezeY;
         transform.localPosition = freezeY;
     }
 }
