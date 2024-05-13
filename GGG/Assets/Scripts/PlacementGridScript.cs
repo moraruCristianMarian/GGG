@@ -117,7 +117,11 @@ public class PlacementGridScript : MonoBehaviour
 
             SpawnMechanicWheels();
 
+            StartCameraFollow();
+
             InitOffenseMode();
+
+            AllowGameOver();
 
             //  Destroy the placement grid
             Destroy(gameObject);
@@ -204,6 +208,14 @@ public class PlacementGridScript : MonoBehaviour
             whs.AttachWheelsToFramePiece();
     }
 
+    //  The camera will follow the king goblin during gameplay
+    private void StartCameraFollow()
+    {
+        CameraFollowScript cfs = FindObjectOfType<CameraFollowScript>();
+        if (cfs)
+            cfs.KingGoblin = FramePieceScript.FindKingGoblin();
+    }
+
     //  Lancers with the specific settings should march forward
     private void InitOffenseMode()
     {
@@ -211,6 +223,14 @@ public class PlacementGridScript : MonoBehaviour
         foreach (LancerScript ls in lancerScripts)
             if (ls.MarchOnStart)
                 ls.Marching = true;
+    }
+
+    //  From this point, game over is possible
+    private void AllowGameOver()
+    {
+        GameOverScript gos = FindObjectOfType<GameOverScript>();
+        if (gos)
+            gos.CanGameOverNow = true;
     }
 
     private bool InVectorRange(Vector3 mouseWorldPos, Vector2 minBound, Vector2 maxBound)

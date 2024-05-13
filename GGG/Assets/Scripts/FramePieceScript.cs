@@ -46,12 +46,19 @@ public class FramePieceScript : MonoBehaviour
 
 
 
-    GameObject FindKingGoblinsPiece()
+    public static GameObject FindKingGoblin()
     {
         GameObject[] goblins = GameObject.FindGameObjectsWithTag("Goblin");
         foreach (GameObject goblin in goblins)
             if (goblin.HasCustomTag("KingGoblin"))
-                return goblin.transform.parent.gameObject;
+                return goblin;
+        return null;
+    }
+    public static GameObject FindKingGoblinsPiece()
+    {
+        GameObject kingGoblin = FindKingGoblin();
+        if (kingGoblin)
+            return kingGoblin.transform.parent.gameObject;
         return null;
     }
     public bool FindWayToKingsPieceOrElse(GameObject destroyedExcluded, GameObject kingGoblinsPiece)
