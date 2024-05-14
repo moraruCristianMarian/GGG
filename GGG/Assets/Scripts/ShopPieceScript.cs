@@ -7,16 +7,24 @@ using TMPro;
 
 public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
 {
+    public ShopMenuScript TheShopMenuScript;
     public Image PieceImage;
     public GameObject SpawnedPiecePrefab;
     public TextMeshProUGUI PriceText;
     public TextMeshProUGUI QuantityText;
     public int ActiveAbilityCharges = -1;
+    public int ShopIndex = -1;
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!TheShopMenuScript.BuyPiece(ShopIndex))
+            return;
+            
         GameObject spawnedPiece = Instantiate(SpawnedPiecePrefab);
         spawnedPiece.GetComponent<FramePieceScript>().gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+        //  Assign the piece this shop index, so that it can be sold later for the correct price and increase quantity
+        spawnedPiece.GetComponent<FramePieceScript>().ShopIndex = ShopIndex;
 
         //  If the spawned piece has an active ability, set its charge count
         CreateAbilityButtonScript cabs = spawnedPiece.GetComponent<CreateAbilityButtonScript>();
@@ -28,5 +36,10 @@ public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
         {
             placementGridScript.SetHeldObject(spawnedPiece, true);
         }
+    }
+
+    public void SetQuantityText(int value)
+    {
+        QuantityText.text = string.Format("x{0}", value);
     }
 }

@@ -321,7 +321,6 @@ public class PlacementGridScript : MonoBehaviour
                         }
                     }
 
-                    //  Testing
                     _boughtObject = false;
                 }
                 else
@@ -329,21 +328,14 @@ public class PlacementGridScript : MonoBehaviour
                     //  Mouse released outside the placement grid
                     if (_heldObject)
                     {
-                        // //  Pieces which were previously placed on the grid return to their original position
-                        // if (!_boughtObject)
-                        // {
-                        //     _heldObject.transform.position = _bottomLeftPos + new Vector2(_prevHeldX, _prevHeldY);
-                        //     _gridObjects[_prevHeldX, _prevHeldY] = _heldObject;
-                        // }
-                        // //  Pieces dragged out of the shop are instead deleted
-                        // else
-                        // {
-                            if ((_prevHeldX != -1) && (_prevHeldY != -1))
-                                _gridObjects[_prevHeldX, _prevHeldY] = null;
-                                
-                            Destroy(_heldObject);
-                            _boughtObject = false;
-                        // }
+                        if ((_prevHeldX != -1) && (_prevHeldY != -1))
+                            _gridObjects[_prevHeldX, _prevHeldY] = null;
+
+                        FramePieceScript heldFps = _heldObject.GetComponent<FramePieceScript>();
+                        Shop.GetComponentInChildren<ShopMenuScript>().SellPiece(heldFps.ShopIndex);
+                            
+                        Destroy(_heldObject);
+                        _boughtObject = false;
                     }
                 }
                 _heldObject = null;
