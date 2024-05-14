@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0.9
+  ParaDepth: 0.97
   AutoScroll: 0
 --- !u!1 &1487555615771930306
 GameObject:
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0.1
+  ParaDepth: 0.25
   AutoScroll: 0
 --- !u!1 &1929594209491602525
 GameObject:
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0.35
+  ParaDepth: 0.5
   AutoScroll: 0
 --- !u!1 &2207586312794456260
 GameObject:
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0
+  ParaDepth: 0.15
   AutoScroll: 0
 --- !u!1 &3610611711391961303
 GameObject:
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0.75
+  ParaDepth: 0.85
   AutoScroll: 0
 --- !u!1 &4219141697885492104
 GameObject:
@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraObject: {fileID: 2606698640117667126}
-  ParaDepth: 0.4
+  ParaDepth: 0.55
   AutoScroll: 0
 --- !u!1 &8334555789621653441
 GameObject:

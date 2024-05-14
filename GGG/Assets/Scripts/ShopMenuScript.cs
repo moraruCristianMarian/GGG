@@ -5,32 +5,54 @@ using UnityEngine;
 public class ShopMenuScript : MonoBehaviour
 {
     public GameObject ShopPiecePrefab;
-    public List<Sprite> ShopPieceSprites;
 
-    public List<GameObject> GamePiecePrefabs;
+    //  This varies from level to level, depending on which pieces are available
+    [System.Serializable]
+    public struct LevelPiece
+    {
+        public int PieceID;
+        public int Price;
+        public int Quantity;
+        public int AbilityCharges;
+    }
+    public List<LevelPiece> LevelPieceData;
 
-    public List<int> ShopStockIndices;
-    public List<int> ShopStockPrices;
-    public List<int> ShopStockQuantity;
-    public List<int> ShopStockAbilityCharges;
+    //  This is always the same, having general information on the pieces (name, description, etc.)
+    [System.Serializable]
+    public struct GlobalPiece
+    {
+        public GameObject PiecePrefab;
+        public Sprite ShopSprite;
+        public string PieceName;
+        public string PieceDesc;
+    }
+    public List<GlobalPiece> GlobalPieceData;
+
 
     private void Start()
     {
         RectTransform shopContentPanel = GetComponent<RectTransform>();
-        shopContentPanel.sizeDelta = new Vector2(shopContentPanel.sizeDelta.x, ShopStockIndices.Count * 100);
+        shopContentPanel.sizeDelta = new Vector2(shopContentPanel.sizeDelta.x, LevelPieceData.Count * 100);
 
-        for (int i = 0; i < ShopStockIndices.Count; i++)
+        for (int i = 0; i < LevelPieceData.Count; i++)
         {
+            GlobalPiece myPiece = GlobalPieceData[LevelPieceData[i].PieceID];
+
             GameObject shopPiece = Instantiate(ShopPiecePrefab);
 
             shopPiece.transform.SetParent(gameObject.transform, false);
             shopPiece.transform.position = new Vector2(0, -(i+1) * 75);
 
-            shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = ShopPieceSprites[ShopStockIndices[i]];
-            shopPiece.GetComponent<UnityEngine.UI.Image>().sprite = ShopPieceSprites[ShopStockIndices[i]];
+            //  Level-specific data
+            shopPiece.GetComponent<ShopPieceScript>().ActiveAbilityCharges = LevelPieceData[i].AbilityCharges;
+            shopPiece.GetComponent<ShopPieceScript>().PriceText.text = string.Format("${0}", LevelPieceData[i].Price);
+            shopPiece.GetComponent<ShopPieceScript>().QuantityText.text = string.Format("x{0}", LevelPieceData[i].Quantity);
 
-            shopPiece.GetComponent<ShopPieceScript>().SpawnedPiecePrefab = GamePiecePrefabs[ShopStockIndices[i]];
-            shopPiece.GetComponent<ShopPieceScript>().ActiveAbilityCharges = ShopStockAbilityCharges[i];
+            //  General data
+            shopPiece.GetComponent<ShopPieceScript>().SpawnedPiecePrefab = myPiece.PiecePrefab;
+            shopPiece.GetComponent<ShopPieceScript>().PieceImage.sprite = myPiece.ShopSprite;
+            shopPiece.GetComponent<TooltipUserScript>().Title = myPiece.PieceName;
+            shopPiece.GetComponent<TooltipUserScript>().Content = myPiece.PieceDesc;
         }
     }
 }

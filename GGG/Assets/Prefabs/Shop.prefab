@@ -136,15 +136,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.627451}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: eae274080b59bc04c8af11257c1e5fab, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 30.500065}
   m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7010649664255982430
@@ -322,28 +322,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShopPiecePrefab: {fileID: 8908165531064607881, guid: 66a5078e2e3d6ee4da87b2b83199938e, type: 3}
-  ShopPieceSprites:
-  - {fileID: 21300000, guid: 993aacbc41a2ab743802da09c23e1122, type: 3}
-  - {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
-  - {fileID: 21300000, guid: 4dc08797ad67f20449373e17cbed864a, type: 3}
-  - {fileID: 21300000, guid: d81c61baf8bbcf44a8247d2a34122eff, type: 3}
-  - {fileID: 21300000, guid: a5ddaa7ba8edda74bada3d680325ed8e, type: 3}
-  - {fileID: 21300000, guid: dab22855861dc70498e86c06d459d58b, type: 3}
-  - {fileID: 21300000, guid: 3e29e97e50e54b249b1fd66b3ec2e592, type: 3}
-  - {fileID: 21300000, guid: 5eb15e1f51c190547ac266777c4a335a, type: 3}
-  GamePiecePrefabs:
-  - {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
-  - {fileID: 4159003300396542501, guid: 238106a1c84aa78458dc7af140aa4bad, type: 3}
-  - {fileID: 4291056668231334804, guid: 63dff27f32d100c48be0051df8761ff1, type: 3}
-  - {fileID: 4291056668231334804, guid: cd31189c44e54a1498c331f92eb65275, type: 3}
-  - {fileID: 9103766131706421021, guid: 3c5abc92d156da74aad84dacffe5fbd5, type: 3}
-  - {fileID: 4291056668231334804, guid: e7cb3db9c66cd384caa1d75a7047569a, type: 3}
-  - {fileID: 4291056668231334804, guid: fddcb8a13a1755d4598453c334572772, type: 3}
-  - {fileID: 4291056668231334804, guid: 5119b8bce0ac33648ac850400e84a549, type: 3}
-  ShopStockIndices: 0100000000000000020000000300000004000000050000000600000007000000
-  ShopStockPrices: 
-  ShopStockQuantity: 
-  ShopStockAbilityCharges: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  LevelPieceData:
+  - PieceID: 0
+    Price: 0
+    Quantity: 1
+    AbilityCharges: -1
+  GlobalPieceData:
+  - PiecePrefab: {fileID: 4159003300396542501, guid: 238106a1c84aa78458dc7af140aa4bad, type: 3}
+    ShopSprite: {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
+    PieceName: King Goblin
+    PieceDesc: <color=#FFFF00>Active:</color> Commands all neighbours.
+  - PiecePrefab: {fileID: 4291056668231334804, guid: 5119b8bce0ac33648ac850400e84a549, type: 3}
+    ShopSprite: {fileID: 21300000, guid: 5eb15e1f51c190547ac266777c4a335a, type: 3}
+    PieceName: Goblin Mobile
+    PieceDesc: Can be moved left/right by the player.
+  - PiecePrefab: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
+    ShopSprite: {fileID: 21300000, guid: 993aacbc41a2ab743802da09c23e1122, type: 3}
+    PieceName: Goblin
+    PieceDesc: Average goblin with no skills or qualifications.
 --- !u!1 &6304593025822237283
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +496,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3992552604572350165}
   m_HandleRect: {fileID: 1077523851789559018}
   m_Direction: 2
-  m_Value: 1
+  m_Value: -0.0000020011526
   m_Size: 0.939
   m_NumberOfSteps: 0
   m_OnValueChanged:

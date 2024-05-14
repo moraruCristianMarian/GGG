@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
 {
+    public Image PieceImage;
     public GameObject SpawnedPiecePrefab;
+    public TextMeshProUGUI PriceText;
+    public TextMeshProUGUI QuantityText;
     public int ActiveAbilityCharges = -1;
 
     public void OnPointerDown(PointerEventData eventData)
