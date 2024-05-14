@@ -26,6 +26,13 @@ public class PauseScript : MonoBehaviour
 
         SetConfirmMainMenu(false);
     }
+
+    public void RetryLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     void SetConfirmMainMenu(bool isConfirmed)
     {
         _confirmMainMenu = isConfirmed;
@@ -49,7 +56,7 @@ public class PauseScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if ((Input.GetKeyDown(KeyCode.P)) || (Input.GetKeyDown(KeyCode.Escape)))
         {
             if (_paused)
                 ResumeGame();
