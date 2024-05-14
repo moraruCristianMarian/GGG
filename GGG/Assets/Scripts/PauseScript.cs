@@ -39,7 +39,10 @@ public class PauseScript : MonoBehaviour
     public void GoToMainMenu()
     {
         if (_confirmMainMenu)
+        {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
+        }
         else
             SetConfirmMainMenu(true);
     }

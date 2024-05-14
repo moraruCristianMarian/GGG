@@ -2025,6 +2025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lancer
       objectReference: {fileID: 0}
+    - target: {fileID: 6008226680753549198, guid: c29445c3f1657754a9532589a8963b27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6185743265560533054, guid: c29445c3f1657754a9532589a8963b27, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 64
@@ -2177,7 +2181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00096507295
+      value: -0.00064062444
       objectReference: {fileID: 0}
     - target: {fileID: 8983721689562068324, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.x
