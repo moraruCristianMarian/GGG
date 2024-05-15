@@ -9,11 +9,7 @@ public class FinishAreaScript : MonoBehaviour
     {
         if (col.gameObject.HasCustomTag("CenterPiece"))
         {
-            Debug.Log("WOW!!");
-
-            // GameObject[] goblins = GameObject.FindGameObjectsWithTag("Goblin");
-            // foreach (GameObject goblin in goblins)
-            //     goblin.transform.SetParent(null);
+            FindObjectOfType<WinConScript>().YouWin();
         }
     }
 }

@@ -10,6 +10,7 @@ public class DialogueSingletonScript : MonoBehaviour
     public Image SpeakerImage;
     public TextMeshProUGUI SpeakerNameText;
     public TextMeshProUGUI SpeechText;
+    public GameObject EnterToContinuePrompt;
 
     private Queue<DialogueScript> _dialogues;
     private static DialogueSingletonScript _singleton;
@@ -57,6 +58,8 @@ public class DialogueSingletonScript : MonoBehaviour
         SpeakerImage.sprite = dia.SpeakerSprite;
         SpeakerNameText.text = dia.Name;
         StartCoroutine(TypeSpeech(dia.Speech));
+
+        EnterToContinuePrompt.SetActive(false);
     }
 
     IEnumerator TypeSpeech(string speech)
@@ -72,6 +75,7 @@ public class DialogueSingletonScript : MonoBehaviour
         }
 
         _finishedTypingSpeech = true;
+        EnterToContinuePrompt.SetActive(true);
     }
 
     void EndDialogue()
