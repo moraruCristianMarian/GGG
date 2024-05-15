@@ -13,6 +13,8 @@ public class DialogueSingletonScript : MonoBehaviour
 
     private Queue<DialogueScript> _dialogues;
     private static DialogueSingletonScript _singleton;
+    private bool _finishedTypingSpeech = true;
+    private string _fullSpeech = "";
 
     void Awake()
     {
@@ -36,6 +38,14 @@ public class DialogueSingletonScript : MonoBehaviour
 
     public void DisplayNextDialogue()
     {
+        if (!_finishedTypingSpeech)
+        {
+            StopAllCoroutines();
+            _finishedTypingSpeech = true;
+            SpeechText.text = _fullSpeech;
+            return;
+        }
+
         if (_dialogues.Count == 0)
         {
             EndDialogue();
@@ -46,7 +56,22 @@ public class DialogueSingletonScript : MonoBehaviour
 
         SpeakerImage.sprite = dia.SpeakerSprite;
         SpeakerNameText.text = dia.Name;
-        SpeechText.text = dia.Speech;
+        StartCoroutine(TypeSpeech(dia.Speech));
+    }
+
+    IEnumerator TypeSpeech(string speech)
+    {
+        _finishedTypingSpeech = false;
+        _fullSpeech = speech;
+
+        SpeechText.text = "";
+        foreach (char letter in speech.ToCharArray())
+        {
+            SpeechText.text += letter;
+            yield return null;
+        }
+
+        _finishedTypingSpeech = true;
     }
 
     void EndDialogue()

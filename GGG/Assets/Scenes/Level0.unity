@@ -153,6 +153,11 @@ MonoBehaviour:
     SpeakerSprite: {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
     Speech: ii Muy fatal !!
     Mirrored: 0
+  - Name: King Goblin
+    SpeakerSprite: {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
+    Speech: yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap
+      yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap yap
+    Mirrored: 0
   - Name: Goblin Rook
     SpeakerSprite: {fileID: 21300000, guid: 3e29e97e50e54b249b1fd66b3ec2e592, type: 3}
     Speech: L
@@ -13680,7 +13685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000091552734
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8983721689562068324, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.x
