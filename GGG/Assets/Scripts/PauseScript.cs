@@ -26,6 +26,13 @@ public class PauseScript : MonoBehaviour
 
         SetConfirmMainMenu(false);
     }
+    public void TogglePause()
+    {
+        if (_paused)
+                ResumeGame();
+            else
+                PauseGame();
+    }
 
     public void RetryLevel()
     {
@@ -58,10 +65,7 @@ public class PauseScript : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.P)) || (Input.GetKeyDown(KeyCode.Escape)))
         {
-            if (_paused)
-                ResumeGame();
-            else
-                PauseGame();
+            TogglePause();
         }
     }
 }

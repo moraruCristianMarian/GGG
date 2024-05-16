@@ -11,24 +11,29 @@ public class WinConScript : MonoBehaviour
     private Vector2 _posOfLETSGOOOO;
     private bool _weAreGoing = false;
     private float _hype = 6f;
+    private RectTransform _letsAnchor;
 
     void Awake()
     {
-        _posOfLETSGOOOO = LETSGOOOO.transform.position;
+        // _posOfLETSGOOOO = LETSGOOOO.transform.position;
+        _letsAnchor = LETSGOOOO.GetComponent<RectTransform>();
+        _posOfLETSGOOOO = _letsAnchor.anchoredPosition;
     }
     void Update()
     {
         if (_weAreGoing)
         {
             Vector2 shakingRightNow = new Vector2(Random.Range(-_hype, _hype), Random.Range(-_hype, _hype));
-            LETSGOOOO.transform.position = _posOfLETSGOOOO + shakingRightNow;
+            // LETSGOOOO.transform.position = _posOfLETSGOOOO + shakingRightNow;
+            _letsAnchor.anchoredPosition = _posOfLETSGOOOO + shakingRightNow;
         }
     }
     private IEnumerator StopGoing()
     {
         yield return new WaitForSecondsRealtime(3);
         _weAreGoing = false;
-        LETSGOOOO.transform.position = _posOfLETSGOOOO;
+        // LETSGOOOO.transform.position = _posOfLETSGOOOO;
+        _letsAnchor.anchoredPosition = _posOfLETSGOOOO;
     }
     public void WeGoAgain()
     {

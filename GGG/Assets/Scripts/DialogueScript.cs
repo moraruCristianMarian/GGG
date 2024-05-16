@@ -8,6 +8,7 @@ public class DialogueScript
 {
     public string Name;
     public Sprite SpeakerSprite;
+    [TextAreaAttribute]
     public string Speech;
     public bool Mirrored;
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoblinIdleScript : MonoBehaviour
 {
     public float FreezeY = -0.1f;
+    public float RoamDist = 1.0f;
     private float _newPos = 0.0f;
     private Animator _animator;
     private bool _walking = false;
@@ -27,11 +28,11 @@ public class GoblinIdleScript : MonoBehaviour
         if (willIMove)
         {
             if (GetComponent<SpriteRenderer>().flipX)
-                _newPos = Random.Range(-0.25f, transform.localPosition.x-0.05f);
+                _newPos = Random.Range(-0.25f*RoamDist, transform.localPosition.x-0.05f);
             else
-                _newPos = Random.Range(transform.localPosition.x+0.05f, 0.25f);
+                _newPos = Random.Range(transform.localPosition.x+0.05f, 0.25f*RoamDist);
 
-            _newPos = Mathf.Clamp(_newPos, -0.25f, 0.25f);
+            _newPos = Mathf.Clamp(_newPos, -0.25f*RoamDist, 0.25f*RoamDist);
 
             _walking = true;
             _animator.SetBool("Walking", true);
