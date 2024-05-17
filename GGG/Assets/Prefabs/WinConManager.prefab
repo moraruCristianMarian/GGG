@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7132836389514006449}
   - component: {fileID: 2707452571852864143}
+  - component: {fileID: 6618602575354637008}
   m_Layer: 5
   m_Name: WinConManager
   m_TagString: Untagged
@@ -532,6 +533,18 @@ MonoBehaviour:
   LETSGOOOO: {fileID: 8093103180489032180}
   Boom: {fileID: 6667617379523971439}
   WinConPanel: {fileID: 3226391828392668221}
+--- !u!225 &6618602575354637008
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638807506424220858}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6667617379523971439
 GameObject:
   m_ObjectHideFlags: 0

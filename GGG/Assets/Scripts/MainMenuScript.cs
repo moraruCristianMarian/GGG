@@ -21,7 +21,7 @@ public class MainMenuScript : MonoBehaviour
         {
             GameObject levelIcon = Instantiate(LevelIconPrefab);
 
-            levelIcon.transform.SetParent(LevelsHolder.transform);
+            levelIcon.transform.SetParent(LevelsHolder.transform, false);
 
             float iconX = 0 - 250 + (i % 5) * 100;
             float iconY = 0 + 100 - (i / 5) * 100;

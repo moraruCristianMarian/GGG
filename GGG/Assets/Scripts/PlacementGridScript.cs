@@ -129,6 +129,8 @@ public class PlacementGridScript : MonoBehaviour
 
             AllowGameOver();
 
+            StartTimer();
+
             //  Destroy the placement grid
             Destroy(gameObject);
         }
@@ -237,6 +239,12 @@ public class PlacementGridScript : MonoBehaviour
         GameOverScript gos = FindObjectOfType<GameOverScript>();
         if (gos)
             gos.CanGameOverNow = true;
+    }
+
+    //  Start the timer 
+    private void StartTimer()
+    {
+        TimerSingletonScript.Get().TimerActive = true;
     }
 
     private bool InVectorRange(Vector3 mouseWorldPos, Vector2 minBound, Vector2 maxBound)

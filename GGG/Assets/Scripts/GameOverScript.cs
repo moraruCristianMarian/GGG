@@ -8,8 +8,6 @@ public class GameOverScript : MonoBehaviour
     public GameObject GameOverPanel;
     public bool CanGameOverNow = false;
     private CanvasGroup _myCanvasGroup;
-    private bool _appeared = false;
-    private bool _appearFadeInDone = false;
 
     void Start()
     {
@@ -27,35 +25,37 @@ public class GameOverScript : MonoBehaviour
 
         PauseSingletonScript.Get().CanPause = false;
 
-        _myCanvasGroup.alpha = 0;
-        _appeared = true;
-
         GameOverPanel.SetActive(true);
+
+        StartCoroutine(FadeIn());
     }
 
     public void RetryLevel()
     {
+        Time.timeScale = 1f;
         PauseSingletonScript.Get().CanPause = true;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void GoToMainMenu()
     {
+        Time.timeScale = 1f;
         PauseSingletonScript.Get().CanPause = true;
         
         SceneManager.LoadScene("MainMenu");
     }
-
-    void Update()
+    
+    private IEnumerator FadeIn()
     {
-        if ((_appeared) && (!_appearFadeInDone))
+        _myCanvasGroup.alpha = 0;
+
+        //  Fade in
+        for (int i = 0; i < 100; i++)
         {
-            _myCanvasGroup.alpha += Time.deltaTime;
-            if (_myCanvasGroup.alpha >= 1)
-            {
-                _myCanvasGroup.interactable = true;
-                _appearFadeInDone = true;
-            }
+            _myCanvasGroup.alpha += 0.01f;
+            yield return new WaitForSecondsRealtime(0.01f);
         }
+
+        _myCanvasGroup.interactable = true;
     }
 }

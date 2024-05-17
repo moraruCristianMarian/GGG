@@ -12,11 +12,13 @@ public class WinConScript : MonoBehaviour
     private bool _weAreGoing = false;
     private float _hype = 6f;
     private RectTransform _letsAnchor;
+    private CanvasGroup _myCanvasGroup;
 
     void Awake()
     {
         _letsAnchor = LETSGOOOO.GetComponent<RectTransform>();
         _posOfLETSGOOOO = _letsAnchor.anchoredPosition;
+        _myCanvasGroup = gameObject.GetComponent<CanvasGroup>();
     }
     void Update()
     {
@@ -56,6 +58,21 @@ public class WinConScript : MonoBehaviour
         Time.timeScale = 0f;
         WinConPanel.SetActive(true);
         WeGoAgain();
+        StartCoroutine(FadeIn());
+    }
+
+    private IEnumerator FadeIn()
+    {
+        _myCanvasGroup.alpha = 0;
+
+        //  Fade in
+        for (int i = 0; i < 50; i++)
+        {
+            _myCanvasGroup.alpha += 0.02f;
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        _myCanvasGroup.interactable = true;
     }
 
     public void GoToMainMenu()
