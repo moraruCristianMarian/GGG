@@ -68,7 +68,10 @@ public class PlacementGridScript : MonoBehaviour
         }
 
         if (centerPieceCount != 1)
+        {
+            PopupTextSingletonScript.Get().Show("King Goblin must be placed.");
             return false;
+        }
 
 
 
@@ -99,7 +102,10 @@ public class PlacementGridScript : MonoBehaviour
         for (int i = 0; i < HCells; i++)
             for (int j = 0; j < VCells; j++)
                 if (!_gridSearchVisited[i,j])
+                {
+                    PopupTextSingletonScript.Get().Show("All goblins must be connected.");
                     return false;
+                }
 
         return true;
     }
