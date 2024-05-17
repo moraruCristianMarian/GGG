@@ -15,7 +15,6 @@ public class WinConScript : MonoBehaviour
 
     void Awake()
     {
-        // _posOfLETSGOOOO = LETSGOOOO.transform.position;
         _letsAnchor = LETSGOOOO.GetComponent<RectTransform>();
         _posOfLETSGOOOO = _letsAnchor.anchoredPosition;
     }
@@ -24,7 +23,6 @@ public class WinConScript : MonoBehaviour
         if (_weAreGoing)
         {
             Vector2 shakingRightNow = new Vector2(Random.Range(-_hype, _hype), Random.Range(-_hype, _hype));
-            // LETSGOOOO.transform.position = _posOfLETSGOOOO + shakingRightNow;
             _letsAnchor.anchoredPosition = _posOfLETSGOOOO + shakingRightNow;
         }
     }
@@ -32,7 +30,6 @@ public class WinConScript : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3);
         _weAreGoing = false;
-        // LETSGOOOO.transform.position = _posOfLETSGOOOO;
         _letsAnchor.anchoredPosition = _posOfLETSGOOOO;
     }
     public void WeGoAgain()
@@ -54,6 +51,8 @@ public class WinConScript : MonoBehaviour
 
     public void YouWin()
     {
+        PauseSingletonScript.Get().CanPause = false;
+
         Time.timeScale = 0f;
         WinConPanel.SetActive(true);
         WeGoAgain();
@@ -61,6 +60,8 @@ public class WinConScript : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        PauseSingletonScript.Get().CanPause = true;
+        
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
@@ -87,6 +88,8 @@ public class WinConScript : MonoBehaviour
             Debug.Log("uh oh");
             return;
         }
+
+        PauseSingletonScript.Get().CanPause = true;
 
         Time.timeScale = 1f;
         SceneManager.LoadScene("Level" + nextLevelIndex);

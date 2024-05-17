@@ -35,7 +35,8 @@ public class GoblinIdleScript : MonoBehaviour
             _newPos = Mathf.Clamp(_newPos, -0.25f*RoamDist, 0.25f*RoamDist);
 
             _walking = true;
-            _animator.SetBool("Walking", true);
+            if (RoamDist != 0.0f)
+                _animator.SetBool("Walking", true);
         }
 
         StartCoroutine(IdleAround(Random.Range(2.0f,6.0f)));
@@ -43,6 +44,9 @@ public class GoblinIdleScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (RoamDist == 0.0f)
+            return;
+            
         float walkLimit = transform.localPosition.x - _newPos;
         if ((transform.TransformDirection(Vector3.left)).x > 0)
             walkLimit *= -1;

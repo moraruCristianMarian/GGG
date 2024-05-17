@@ -438,6 +438,10 @@ MonoBehaviour:
     ShopSprite: {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
     PieceName: King Goblin
     PieceDesc: <color=#FFFF00>Active:</color> Commands all neighbours.
+  - PiecePrefab: {fileID: 2841483709927611142, guid: ace4824220fe766459bd7e51d207f0bb, type: 3}
+    ShopSprite: {fileID: 21300000, guid: b231cabde7703be479715c44f36445c2, type: 3}
+    PieceName: King Goblin
+    PieceDesc: Help.
   - PiecePrefab: {fileID: 4291056668231334804, guid: 5119b8bce0ac33648ac850400e84a549, type: 3}
     ShopSprite: {fileID: 21300000, guid: 5eb15e1f51c190547ac266777c4a335a, type: 3}
     PieceName: Goblin Mobile

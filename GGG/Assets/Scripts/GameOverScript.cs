@@ -25,6 +25,8 @@ public class GameOverScript : MonoBehaviour
         if (!CanGameOverNow)
             return;
 
+        PauseSingletonScript.Get().CanPause = false;
+
         _myCanvasGroup.alpha = 0;
         _appeared = true;
 
@@ -33,10 +35,14 @@ public class GameOverScript : MonoBehaviour
 
     public void RetryLevel()
     {
+        PauseSingletonScript.Get().CanPause = true;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void GoToMainMenu()
     {
+        PauseSingletonScript.Get().CanPause = true;
+        
         SceneManager.LoadScene("MainMenu");
     }
 
