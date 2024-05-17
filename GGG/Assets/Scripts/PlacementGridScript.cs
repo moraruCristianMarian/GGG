@@ -318,7 +318,10 @@ public class PlacementGridScript : MonoBehaviour
                         {
                             //  ... and the piece held waas just dragged from the shop
                             if (_boughtObject)
-                            {
+                            {        
+                                FramePieceScript heldFps = _heldObject.GetComponent<FramePieceScript>();
+                                Shop.GetComponentInChildren<ShopMenuScript>().SellPiece(heldFps.ShopIndex);
+
                                 _boughtObject = false;
                                 Destroy(_heldObject);
                                 return;
