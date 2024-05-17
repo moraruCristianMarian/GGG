@@ -38,7 +38,7 @@ public class ShopMenuScript : MonoBehaviour
         UpdateMoneyText();
         
         RectTransform shopContentPanel = GetComponent<RectTransform>();
-        shopContentPanel.sizeDelta = new Vector2(shopContentPanel.sizeDelta.x, LevelPieceData.Count * 100);
+        shopContentPanel.sizeDelta = new Vector2(shopContentPanel.sizeDelta.x, LevelPieceData.Count * 50);
 
         _shopPieceScriptsByIndex = new ShopPieceScript[LevelPieceData.Count];
 
@@ -50,7 +50,6 @@ public class ShopMenuScript : MonoBehaviour
             _shopPieceScriptsByIndex[i] = shopPiece.GetComponent<ShopPieceScript>();
 
             shopPiece.transform.SetParent(gameObject.transform, false);
-            shopPiece.transform.position = new Vector2(0, -(i+1) * 75);
 
             //  Level-specific data
             _shopPieceScriptsByIndex[i].ActiveAbilityCharges = LevelPieceData[i].AbilityCharges;
