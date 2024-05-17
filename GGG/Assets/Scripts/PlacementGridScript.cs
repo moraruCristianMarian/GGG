@@ -121,7 +121,7 @@ public class PlacementGridScript : MonoBehaviour
             ChangeUIToLevelStart();
             CreateAbilityIcons();
 
-            SpawnMechanicWheels();
+            DoPlacementPhaseAbilities();
 
             StartCameraFollow();
 
@@ -208,12 +208,17 @@ public class PlacementGridScript : MonoBehaviour
             cab.CreateMyAbilityButton();
     }
     
-    //  Spawn all wheels as indicated by wheel highlights of the goblin mechanic frame pieces
-    private void SpawnMechanicWheels()
+    //  - Spawn all wheels as indicated by wheel highlights of the goblin mechanic frame pieces
+    //  - Set the Goblin Dashers' dash direction
+    private void DoPlacementPhaseAbilities()
     {
         WheelHighlightScript[] wheelHighlightScripts = GameObject.FindObjectsOfType<WheelHighlightScript>();
         foreach (WheelHighlightScript whs in wheelHighlightScripts)
             whs.AttachWheelsToFramePiece();
+
+        DasherHighlightScript[] dasherHighlightScripts = GameObject.FindObjectsOfType<DasherHighlightScript>();
+        foreach (DasherHighlightScript dhs in dasherHighlightScripts)
+            dhs.SetRocketRotation();
     }
 
     //  The camera will follow the king goblin during gameplay

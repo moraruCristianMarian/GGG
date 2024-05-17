@@ -450,6 +450,17 @@ MonoBehaviour:
     ShopSprite: {fileID: 21300000, guid: 993aacbc41a2ab743802da09c23e1122, type: 3}
     PieceName: Goblin
     PieceDesc: Average goblin with no skills or qualifications.
+  - PiecePrefab: {fileID: 4291056668231334804, guid: 63dff27f32d100c48be0051df8761ff1, type: 3}
+    ShopSprite: {fileID: 21300000, guid: 4dc08797ad67f20449373e17cbed864a, type: 3}
+    PieceName: Goblin Dasher
+    PieceDesc: '<color=#FFFF00>Placement:</color> Right click the Rocket highlighter
+      to rotate its Dash Direction.
+
+      <color=#FFFF00>Active:</color> Dashes
+      in the Rocket''s Dashing Direction.
+
+      <color=#FFFF00>On Command:</color>
+      Triggers the <color=#FFFF00>Active</color> ability with double the force.'
 --- !u!1 &5077975580044276484
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class ShopMenuScript : MonoBehaviour
         public GameObject PiecePrefab;
         public Sprite ShopSprite;
         public string PieceName;
+        [TextAreaAttribute]
         public string PieceDesc;
     }
     public List<GlobalPiece> GlobalPieceData;

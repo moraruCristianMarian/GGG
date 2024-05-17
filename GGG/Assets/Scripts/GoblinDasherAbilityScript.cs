@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class GoblinDasherAbilityScript : MonoBehaviour
 {
-    public void RocketJump()
+    public Quaternion DashQuaternion;
+
+    void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 20.0f, ForceMode2D.Impulse);
+        DashQuaternion = Quaternion.identity;
+    }
+
+    public void RocketJump(int strengthMultiplier = 10)
+    {
+        Vector2 dashDirection = DashQuaternion * Vector2.right;
+        
+        gameObject.GetComponent<Rigidbody2D>().AddForce(dashDirection * strengthMultiplier, ForceMode2D.Impulse);
     }
 }

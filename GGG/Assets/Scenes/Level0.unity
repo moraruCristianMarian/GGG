@@ -15138,7 +15138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[1].PieceID
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[2].PieceID
@@ -15718,7 +15718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603020148722570330, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000061035156
+      value: -0.00091552734
       objectReference: {fileID: 0}
     - target: {fileID: 8830275293483264110, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.y
