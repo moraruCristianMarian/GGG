@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlacementGridScript : MonoBehaviour
 {
+    public UnityEvent OnLevelStartEvent;
     public GameObject AbilitiesBar;
     public GameObject StartButton;
     public GameObject Shop;
@@ -131,6 +133,8 @@ public class PlacementGridScript : MonoBehaviour
 
             StartTimer();
 
+            DoLevelStartEvents();
+
             //  Destroy the placement grid
             Destroy(gameObject);
         }
@@ -251,6 +255,14 @@ public class PlacementGridScript : MonoBehaviour
     {
         TimerSingletonScript.Get().TimerActive = true;
     }
+
+    //  Level-specific events that should happen as soon as the level successfully starts
+    private void DoLevelStartEvents()
+    {
+        if (OnLevelStartEvent != null)
+            OnLevelStartEvent.Invoke();
+    }
+
 
     private bool InVectorRange(Vector3 mouseWorldPos, Vector2 minBound, Vector2 maxBound)
     {
