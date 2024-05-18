@@ -60,6 +60,8 @@ public class DialogueSingletonScript : MonoBehaviour
         StartCoroutine(TypeSpeech(dia.Speech));
 
         EnterToContinuePrompt.SetActive(false);
+
+        dia.DoAppearEvent();
     }
 
     IEnumerator TypeSpeech(string speech)

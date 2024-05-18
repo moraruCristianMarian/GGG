@@ -1659,11 +1659,15 @@ MonoBehaviour:
   LevelNameText: {fileID: 2139284914}
   LevelIconPrefab: {fileID: 5858729964691103927, guid: 659153cc75eec9049b88ca49e5646a20, type: 3}
   LevelNames:
-  - 0 - Tutorial
-  - 1 - Nope
+  - 1 - Timely Arrival
+  - 2 - Placement 101
+  - 3 - Goblins Together Strong
+  - 4 - Movable Object
   LevelSprites:
-  - {fileID: 21300000, guid: 577076cd6ca86e64990d4da1bf97d495, type: 3}
-  - {fileID: 21300000, guid: 577076cd6ca86e64990d4da1bf97d495, type: 3}
+  - {fileID: 21300000, guid: 562b2d53baa374240b3f4db21cc4cdff, type: 3}
+  - {fileID: 21300000, guid: 47494305c1ce75343bab5c1aab8587e5, type: 3}
+  - {fileID: 21300000, guid: e8e93ebc8a5c57f4685df2893a112dba, type: 3}
+  - {fileID: 21300000, guid: c463c598019506c44aae72ba2a8ca809, type: 3}
 --- !u!1001 &1725409443
 PrefabInstance:
   m_ObjectHideFlags: 0
