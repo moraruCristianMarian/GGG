@@ -103,6 +103,7 @@ MonoBehaviour:
   AbilitiesBar: {fileID: 0}
   StartButton: {fileID: 0}
   Shop: {fileID: 0}
-  FramePrefab: {fileID: 0}
+  TheShopMenuScript: {fileID: 0}
+  FramePrefab: {fileID: 5266883718076030704, guid: 51ec934ad9decc546b91fc247ae4cff3, type: 3}
   HCells: 5
   VCells: 3

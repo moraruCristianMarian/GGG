@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinDasherAbilityScript : MonoBehaviour
 {
+    public GameObject IconRotationIndicatorPrefab;
     public Quaternion DashQuaternion;
 
     void Start()

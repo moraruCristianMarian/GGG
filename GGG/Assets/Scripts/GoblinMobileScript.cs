@@ -37,7 +37,6 @@ public class GoblinMobileScript : MonoBehaviour
             moveInput += 1;
 
         float moveAmount = moveInput * Speed;
-        Debug.Log(moveAmount);
 
         Vector2 newVelocity = new Vector2(moveAmount, _rb.velocity.y);
         _rb.velocity = newVelocity;
@@ -70,6 +69,6 @@ public class GoblinMobileScript : MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.tag == "Ground")
-            Debug.Log("airborne");
+            _groundCheck = false;
     }
 }

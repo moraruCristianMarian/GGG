@@ -42,6 +42,19 @@ public class DasherHighlightScript : MonoBehaviour, IPointerDownHandler, IPointe
     public void SetRocketRotation()
     {
         transform.parent.GetComponent<GoblinDasherAbilityScript>().DashQuaternion = transform.rotation;
+
+
+        //  Create indicator above the Goblin Dasher's ability icon for the rotation of the dash direction
+        GameObject myActiveAbilityIcon = transform.parent.GetComponent<CreateAbilityButtonScript>().GetMyActiveAbilityIcon();
+
+        GameObject iconRotationIndicatorPrefab = transform.parent.GetComponent<GoblinDasherAbilityScript>().IconRotationIndicatorPrefab;
+        GameObject iconRotationIndicator = Instantiate(iconRotationIndicatorPrefab);
+        iconRotationIndicator.transform.SetParent(myActiveAbilityIcon.transform);
+        iconRotationIndicator.transform.rotation = transform.rotation;
+        iconRotationIndicator.GetComponent<RectTransform>().anchoredPosition = new Vector2(48, 48);
+
+
+        //  Destroy this highlight
         Destroy(gameObject);
     }
 }

@@ -9,6 +9,7 @@ public class PlacementGridScript : MonoBehaviour
     public GameObject AbilitiesBar;
     public GameObject StartButton;
     public GameObject Shop;
+    public ShopMenuScript TheShopMenuScript;
 
     public GameObject FramePrefab;
 
@@ -316,6 +317,8 @@ public class PlacementGridScript : MonoBehaviour
             }
             else
             {
+                TheShopMenuScript.CurrentlyHoldingBoughtPiece = false;
+
                 // MouseButtonUp (release the mouse) over the placement grid
                 if (InVectorRange(mouseWorldPos, _bottomLeftPos, _topRightPos))
                 {

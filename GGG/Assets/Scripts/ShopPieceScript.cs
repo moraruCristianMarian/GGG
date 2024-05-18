@@ -20,6 +20,8 @@ public class ShopPieceScript : MonoBehaviour, IPointerDownHandler
         if (!TheShopMenuScript.BuyPiece(ShopIndex))
             return;
             
+        TheShopMenuScript.CurrentlyHoldingBoughtPiece = true;
+
         GameObject spawnedPiece = Instantiate(SpawnedPiecePrefab);
         spawnedPiece.GetComponent<FramePieceScript>().gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 

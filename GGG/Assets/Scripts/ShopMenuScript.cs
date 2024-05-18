@@ -32,6 +32,8 @@ public class ShopMenuScript : MonoBehaviour
     }
     public List<GlobalPiece> GlobalPieceData;
     private ShopPieceScript[] _shopPieceScriptsByIndex;
+    [HideInInspector]
+    public bool CurrentlyHoldingBoughtPiece = false;
 
 
     private void Start()
@@ -76,6 +78,9 @@ public class ShopMenuScript : MonoBehaviour
             return false;
 
         if (LevelPieceData[shopIndex].Quantity <= 0)
+            return false;
+
+        if (CurrentlyHoldingBoughtPiece)
             return false;
 
         //  Success

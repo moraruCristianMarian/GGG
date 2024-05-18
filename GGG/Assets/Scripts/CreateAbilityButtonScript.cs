@@ -13,6 +13,11 @@ public class CreateAbilityButtonScript : MonoBehaviour
 
     private GameObject _myAbilityIcon;
 
+    public GameObject GetMyActiveAbilityIcon()
+    {
+        return _myAbilityIcon;
+    }
+
     public void CreateMyAbilityButton()
     {
         GameObject AbilityBar = GameObject.FindWithTag("AbilityBar");
