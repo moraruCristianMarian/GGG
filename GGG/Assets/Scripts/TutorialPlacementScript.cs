@@ -12,6 +12,7 @@ public class TutorialPlacementScript : MonoBehaviour
     public GameObject ControlPoints;
     public GameObject TimerObject;
     public GameObject ShopObject;
+    public int WinningControlPointsNr = 3;
     private int _controlPointsCaptured = 0;
 
     public void WhatIsAFramePiece()
@@ -64,7 +65,7 @@ public class TutorialPlacementScript : MonoBehaviour
     {
         _controlPointsCaptured += 1;
 
-        if (_controlPointsCaptured == 3)        
+        if (_controlPointsCaptured == WinningControlPointsNr)        
             FindObjectOfType<WinConScript>().YouWin();
     }
 }

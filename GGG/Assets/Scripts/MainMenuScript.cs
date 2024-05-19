@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
 
             levelIcon.transform.SetParent(LevelsHolder.transform, false);
 
-            float iconX = 0 - 250 + (i % 5) * 100;
+            float iconX = 0 - 200 + (i % 5) * 100;
             float iconY = 0 + 100 - (i / 5) * 100;
             levelIcon.transform.localPosition = new Vector2(iconX, iconY);
 
