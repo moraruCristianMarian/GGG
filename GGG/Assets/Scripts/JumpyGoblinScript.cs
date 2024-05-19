@@ -15,7 +15,7 @@ public class JumpyGoblinScript : MonoBehaviour
     }
     void Update()
     {
-        _anim += Time.deltaTime * 7;
+        _anim += Time.deltaTime * 9;
         if (_anim > 628)
             _anim -= 628;
         IdleScript.FreezeY = Mathf.Sin(_anim) * 0.2f + 0.1f;

@@ -12312,7 +12312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[1].Quantity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[2].Quantity

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ControlPointScript : MonoBehaviour
 {
+    public float CaptureRate = 1.0f;
     public SpriteRenderer FillImage;
     public UnityEvent CaptureEvent;
     private bool _captured = false;
@@ -22,7 +23,7 @@ public class ControlPointScript : MonoBehaviour
             if (!other.gameObject.HasCustomTag("FramePiece"))
                 return;
 
-            float captureAmount = FillImage.size.y + Time.deltaTime;
+            float captureAmount = FillImage.size.y + Time.deltaTime * CaptureRate;
             FillImage.size = new Vector2(1, captureAmount);
 
             if (FillImage.size.y >= 1)
