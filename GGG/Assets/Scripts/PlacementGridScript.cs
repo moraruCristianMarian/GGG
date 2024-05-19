@@ -48,6 +48,23 @@ public class PlacementGridScript : MonoBehaviour
 
         _bottomLeftPos = new Vector2(transform.position.x - HCells/2, transform.position.y - VCells/2);
         _topRightPos   = new Vector2(transform.position.x + HCells/2, transform.position.y + VCells/2);
+
+        
+        //  Adjust position if grid has an even number of cellson an axis, to align with the tilemap
+        if (HCells % 2 == 0)
+        {
+            transform.position -= new Vector3(0.5f, 0f, 0f); 
+            _topRightPos -= new Vector2(1.0f, 0f);
+        }
+        if (VCells % 2 == 0)
+        {
+            transform.position -= new Vector3(0f, 0.5f, 0f);
+            _topRightPos -= new Vector2(0f, 1.0f);
+        }
+
+        Debug.Log(transform.position);
+        Debug.Log(_bottomLeftPos);
+        Debug.Log(_topRightPos);
     }
 
     //  Conditions to start level:
@@ -285,8 +302,10 @@ public class PlacementGridScript : MonoBehaviour
             mouseWorldPos.z = 0;
 
             //  Get indices for the grid positions
-            int gridX = (int)Mathf.Round(mouseWorldPos.x - transform.position.x + HCells/2);
-            int gridY = (int)Mathf.Round(mouseWorldPos.y - transform.position.y + VCells/2);
+            // int gridX = (int)Mathf.Round(mouseWorldPos.x - transform.position.x + HCells/2);
+            // int gridY = (int)Mathf.Round(mouseWorldPos.y - transform.position.y + VCells/2);
+            int gridX = (int)Mathf.Round(mouseWorldPos.x - _topRightPos.x + HCells - 1);
+            int gridY = (int)Mathf.Round(mouseWorldPos.y - _topRightPos.y + VCells - 1);
 
             if (Input.GetMouseButtonDown(0))
             {

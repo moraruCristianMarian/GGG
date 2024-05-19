@@ -10789,6 +10789,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1050280423539092275, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050280423539092275, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050280423539092275, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050280423539092275, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.size
       value: 2
@@ -10810,12 +10826,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: GlobalPieceData.Array.data[0].PieceDesc
+      value: Look! The next castle is right there!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[1].AbilityCharges
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1374268336498322128, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: LevelPieceData.Array.data[2].AbilityCharges
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861632877813391819, guid: b6777c39b6859294d9d523044d9af904, type: 3}
+      propertyPath: StartTimer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4655205795716521463, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_Name
@@ -10835,7 +10859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7289687902280081836, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: VCells
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7831971667993230287, guid: b6777c39b6859294d9d523044d9af904, type: 3}
       propertyPath: m_AnchorMax.x
