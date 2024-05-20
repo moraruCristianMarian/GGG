@@ -460,12 +460,19 @@ MonoBehaviour:
   - PiecePrefab: {fileID: 4291056668231334804, guid: cd31189c44e54a1498c331f92eb65275, type: 3}
     ShopSprite: {fileID: 21300000, guid: d81c61baf8bbcf44a8247d2a34122eff, type: 3}
     PieceName: Goblin Mechanic
-    PieceDesc: <color=#FFFF00>Placement:</color> Right click the Wheels highlighter
-      to drag it over a piece. At the start of the level, that piece gains wheels.
+    PieceDesc: '<color=#FFFF00>Placement:</color> Right click the Wheels highlighter
+      to drag it over a piece.
+
+      At the start of the level, that piece gains
+      wheels.'
   - PiecePrefab: {fileID: 4291056668231334804, guid: e7cb3db9c66cd384caa1d75a7047569a, type: 3}
     ShopSprite: {fileID: 21300000, guid: dab22855861dc70498e86c06d459d58b, type: 3}
     PieceName: Goblin Demolitionist
     PieceDesc: <color=#FFFF00>On Command:</color> Destroy this piece.
+  - PiecePrefab: {fileID: 9103766131706421021, guid: 3c5abc92d156da74aad84dacffe5fbd5, type: 3}
+    ShopSprite: {fileID: 21300000, guid: a5ddaa7ba8edda74bada3d680325ed8e, type: 3}
+    PieceName: Goblin Drummer
+    PieceDesc: <color=#FFFF00>On Command:</color> Commands all neighbours.
   CurrentlyHoldingBoughtPiece: 0
 --- !u!1 &5077975580044276484
 GameObject:
