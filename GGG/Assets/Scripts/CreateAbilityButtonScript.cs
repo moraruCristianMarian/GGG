@@ -27,7 +27,7 @@ public class CreateAbilityButtonScript : MonoBehaviour
             _myAbilityIcon.transform.SetParent(AbilityBar.transform, false);
 
             float myBarOffset = (AbilityBar.transform.childCount - 1) * AbilityIcon.rect.width * 3;
-            _myAbilityIcon.transform.position += new Vector3(myBarOffset, 0, 0);
+            _myAbilityIcon.GetComponent<RectTransform>().anchoredPosition += new Vector2(myBarOffset, 0);
             
             AbilityButtonScript abs = _myAbilityIcon.GetComponentInChildren<AbilityButtonScript>();
             if (abs)

@@ -35,7 +35,8 @@ public class DasherHighlightScript : MonoBehaviour, IPointerDownHandler, IPointe
             dir.z = 0;
 
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            float snapAngle = Mathf.Round(angle / 15) * 15;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, snapAngle));
         }
     }
 
@@ -49,7 +50,7 @@ public class DasherHighlightScript : MonoBehaviour, IPointerDownHandler, IPointe
 
         GameObject iconRotationIndicatorPrefab = transform.parent.GetComponent<GoblinDasherAbilityScript>().IconRotationIndicatorPrefab;
         GameObject iconRotationIndicator = Instantiate(iconRotationIndicatorPrefab);
-        iconRotationIndicator.transform.SetParent(myActiveAbilityIcon.transform);
+        iconRotationIndicator.transform.SetParent(myActiveAbilityIcon.transform, false);
         iconRotationIndicator.transform.rotation = transform.rotation;
         iconRotationIndicator.GetComponent<RectTransform>().anchoredPosition = new Vector2(48, 48);
 

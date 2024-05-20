@@ -61,10 +61,6 @@ public class PlacementGridScript : MonoBehaviour
             transform.position -= new Vector3(0f, 0.5f, 0f);
             _topRightPos -= new Vector2(0f, 1.0f);
         }
-
-        Debug.Log(transform.position);
-        Debug.Log(_bottomLeftPos);
-        Debug.Log(_topRightPos);
     }
 
     //  Conditions to start level:

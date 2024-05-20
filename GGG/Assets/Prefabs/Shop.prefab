@@ -446,11 +446,6 @@ MonoBehaviour:
     ShopSprite: {fileID: 21300000, guid: 5eb15e1f51c190547ac266777c4a335a, type: 3}
     PieceName: Goblin Mobile
     PieceDesc: While touching the ground, this can be moved left/right by the player.
-  - PiecePrefab: {fileID: 4291056668231334804, guid: cd31189c44e54a1498c331f92eb65275, type: 3}
-    ShopSprite: {fileID: 21300000, guid: d81c61baf8bbcf44a8247d2a34122eff, type: 3}
-    PieceName: Goblin Mechanic
-    PieceDesc: <color=#FFFF00>Placement:</color> Right click the Wheels highlighter
-      to drag it over a piece. At the start of the level, that piece gains wheels.
   - PiecePrefab: {fileID: 4291056668231334804, guid: 63dff27f32d100c48be0051df8761ff1, type: 3}
     ShopSprite: {fileID: 21300000, guid: 4dc08797ad67f20449373e17cbed864a, type: 3}
     PieceName: Goblin Dasher
@@ -462,6 +457,11 @@ MonoBehaviour:
 
       <color=#FFFF00>On Command:</color>
       Triggers the <color=#FFFF00>Active</color> ability with double the force.'
+  - PiecePrefab: {fileID: 4291056668231334804, guid: cd31189c44e54a1498c331f92eb65275, type: 3}
+    ShopSprite: {fileID: 21300000, guid: d81c61baf8bbcf44a8247d2a34122eff, type: 3}
+    PieceName: Goblin Mechanic
+    PieceDesc: <color=#FFFF00>Placement:</color> Right click the Wheels highlighter
+      to drag it over a piece. At the start of the level, that piece gains wheels.
   CurrentlyHoldingBoughtPiece: 0
 --- !u!1 &5077975580044276484
 GameObject:

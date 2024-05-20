@@ -24,7 +24,7 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void UseAbility()
     {
-        if (!_usedAbility)
+        if ((!_usedAbility) && (ChargesLeft > 0))
         {
             ImageCooldown.fillAmount = 1;
             AbilityButton.interactable = false;
@@ -32,13 +32,10 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
 
             MyUnitAbility.UseActiveAbility();
 
-            if (ChargesLeft > 0)
-            {
-                ChargesLeft -= 1;
-                ChargesLeftText.text = ChargesLeft.ToString();
-                if (ChargesLeft == 0)
-                    ImageCooldown.fillAmount = 1;
-            }
+            ChargesLeft -= 1;
+            ChargesLeftText.text = ChargesLeft.ToString();
+            if (ChargesLeft == 0)
+                ImageCooldown.fillAmount = 1;
         }
     }
 
@@ -84,6 +81,8 @@ public class AbilityButtonScript : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if (ChargesLeft != -1)
             ChargesLeftText.text = ChargesLeft.ToString();
+        if (ChargesLeft == 0)
+            ImageCooldown.fillAmount = 1;
     }
 
     void Update()
