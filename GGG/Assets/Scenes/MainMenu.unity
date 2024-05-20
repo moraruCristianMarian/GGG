@@ -1665,6 +1665,10 @@ MonoBehaviour:
   - 4 - Movable Object
   - 5 - The Scorpion Strategy
   - 6 - Abilities 101
+  - 7 - Goblin Space Program
+  - 8 - Meet the Mechanic
+  - 9 - His main goal is to blow up
+  - 10 - Long Live the King
   LevelSprites:
   - {fileID: 21300000, guid: 562b2d53baa374240b3f4db21cc4cdff, type: 3}
   - {fileID: 21300000, guid: 47494305c1ce75343bab5c1aab8587e5, type: 3}
@@ -1672,6 +1676,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c463c598019506c44aae72ba2a8ca809, type: 3}
   - {fileID: 21300000, guid: 05408013c02f68546935cc6b8624e043, type: 3}
   - {fileID: 21300000, guid: 8c6583201dc03814d940e3a05997f4b8, type: 3}
+  - {fileID: 21300000, guid: 6f8b74e4ece7c8e4bb1d5ef4f85e6294, type: 3}
+  - {fileID: 21300000, guid: ebfb43916cfb1f245b4a8a831fc70c9c, type: 3}
+  - {fileID: 21300000, guid: 11afbd2ae44f28943bf6430a4e1f08b1, type: 3}
+  - {fileID: 21300000, guid: 902f30c955c1a064388268020dcd31dd, type: 3}
 --- !u!1001 &1725409443
 PrefabInstance:
   m_ObjectHideFlags: 0

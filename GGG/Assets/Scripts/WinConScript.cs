@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class WinConScript : MonoBehaviour
 {
     public GameObject LETSGOOOO;
     public GameObject Boom;
     public GameObject WinConPanel;
+    public ShopMenuScript TheShopMenuScript;
+    public TextMeshProUGUI TimeRemainingText;
+    public TextMeshProUGUI MoneyRemainingText;
+    public TextMeshProUGUI GoblinsRemainingText;
     private Vector2 _posOfLETSGOOOO;
     private bool _weAreGoing = false;
     private float _hype = 6f;
@@ -54,6 +59,15 @@ public class WinConScript : MonoBehaviour
     public void YouWin()
     {
         PauseSingletonScript.Get().CanPause = false;
+
+        float remainingSeconds = TimerSingletonScript.Get().StartTimer - TimerSingletonScript.Get().RemainingTimer;
+        float minutes = Mathf.FloorToInt(remainingSeconds / 60);
+        float seconds = Mathf.FloorToInt(remainingSeconds % 60);
+        TimeRemainingText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        MoneyRemainingText.text = string.Format("${0}", TheShopMenuScript.Money);
+
+        GoblinsRemainingText.text = FindObjectsOfType<FramePieceScript>().Length.ToString();
 
         Time.timeScale = 0f;
         WinConPanel.SetActive(true);

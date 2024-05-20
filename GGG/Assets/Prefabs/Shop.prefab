@@ -462,6 +462,10 @@ MonoBehaviour:
     PieceName: Goblin Mechanic
     PieceDesc: <color=#FFFF00>Placement:</color> Right click the Wheels highlighter
       to drag it over a piece. At the start of the level, that piece gains wheels.
+  - PiecePrefab: {fileID: 4291056668231334804, guid: e7cb3db9c66cd384caa1d75a7047569a, type: 3}
+    ShopSprite: {fileID: 21300000, guid: dab22855861dc70498e86c06d459d58b, type: 3}
+    PieceName: Goblin Demolitionist
+    PieceDesc: <color=#FFFF00>On Command:</color> Destroy this piece.
   CurrentlyHoldingBoughtPiece: 0
 --- !u!1 &5077975580044276484
 GameObject:
